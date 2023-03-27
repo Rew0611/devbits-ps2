@@ -1,0 +1,10 @@
+.buttons{
+    height: 100px;
+    width: 600px;
+}
+
+.buttons button{
+    height: 100px;
+    width: 300px;
+    color: black;
+}

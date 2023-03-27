@@ -1,24 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import { makeStyles } from "@material-ui/core";
+import Homepage from "./Pages/HomePage";
+import "./App.css";
+import {  BrowserRouter, Routes, Route } from "react-router-dom";
+import CoinPage from "./Pages/CoinPage";
+import Header from "./components/Header";
+import Main from './components/Main/main';
+import Login from './components/Login/login';
+import Signup from './components/Signup/signup';
+import Dashboard from './components/Dashboard/dashboard';
+import GoogleMiddleware from './components/GoogleLogin/GoogleMiddleware';
+import { AuthProvider } from "./context/AuthContext";
+
+const useStyles = makeStyles(() => ({
+  App: {
+    backgroundColor: "black",
+    color: "white",
+    minHeight: "100vh",
+  },
+}));
 
 function App() {
+  const classes = useStyles();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+    <AuthProvider>
+      <div className={classes.App}>
+        <Header />
+      <Routes>
+        <Route path="/" element={<Main/>}/>
+        <Route path="/stock" element={<Homepage/>} />
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/signup" element={<Signup/>}/>
+        <Route path="/dashboard" element={<Dashboard/>}/>
+        <Route path='/api/google/callback' element={<GoogleMiddleware />}/>
+        <Route path="/coins/:id" element={<CoinPage/>} />
+      </Routes> 
+      </div>
+      </AuthProvider>
+    </BrowserRouter>
   );
 }
 

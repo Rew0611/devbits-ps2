@@ -1,0 +1,9 @@
+.nav-itemx{
+    display: flexbox;
+    flex-direction: row;
+    float: left;
+}
+
+.tpr{
+    padding-left: 10px;
+}

@@ -1,0 +1,47 @@
+.dashboard-main{
+    height: 100vh;
+    flex-grow: unset;
+}
+.profile-outer{
+    width: 20vw;
+    border-radius: 10%;
+    background-color: #000000;
+    box-shadow: 21px 0 124px -26px #162859;
+    /* background: radial-gradient(circle, rgba(5,28,54,1) 0%, rgba(11,33,56,1) 36%, rgba(18,50,83,1) 60%, rgba(20,51,84,1) 78%, rgba(1,5,10,1) 100%); */
+}
+.profile-outer img{
+    background-color: #000000;
+    box-shadow: 21px 0 124px -26px #162859;
+}
+.cur-stocks-outer{
+    height: 100%;
+    width: 60vw;
+    scrollbar-width: none;
+}
+.cur-stocks-inner::-webkit-scrollbar{
+    display: none;
+}
+.watchlist::-webkit-scrollbar{
+    display: none;
+}
+.current-stocks{
+    background-color: #000000;
+    box-shadow: 21px 0 124px -26px #162859;
+    border-radius: 5%;
+    /* margin: 20px 0; */
+}
+.stock-card-main{
+    border-radius: 40px;
+    background-color: #000000;
+    box-shadow: 21px 0 124px -26px #162859;
+}
+.transaction-card-main, .watchlist-card-main{
+    background-color: #000000;
+}
+.transaction-card{
+    width: 80vw;
+    box-shadow: 21px 0 124px -26px #162859;
+}
+.watchlist-card{
+    box-shadow: 21px 0 124px -26px #162859;
+}

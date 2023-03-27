@@ -1,0 +1,17 @@
+.login-main{
+    /* background: radial-gradient(circle, rgba(0,0,0,1) 7%, rgba(41,56,71,1) 38%, rgba(13,29,45,1) 56%, rgba(15,22,30,1) 68%, rgba(0,0,0,1) 100%); */
+    /* background-image: url("./loginbg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat; */
+    background-color: black;
+    align-content: center;
+    flex-wrap: wrap;
+    width: 100vw;
+    height: 100vh;
+}
+.login-main form{
+    background-color: black;
+    box-shadow: 21px 0 124px -26px #162859;
+    border-radius: 20px;
+    padding: 20px;
+}
