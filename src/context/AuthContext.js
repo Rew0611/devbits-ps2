@@ -7,8 +7,8 @@ const AuthContext = createContext()
 export default AuthContext;
 
 const BACKEND_URL = "http://localhost:8000"
-const CLIENT_SECRET = "V4shT7zzLNfDwa0pt6KhiBCUbouViroFWnf3jhcoa9jHlN567aMHvu5V1nn19xu6OVf24M0BmG16J70nYkYuvSdagfGpnIG3fHqkzNQA7KBLs03fFjojupU2MbP4rrN2"
-const CLIENT_ID = "Qwmw5sQQc5LJnNCC7ZCHkOcBrglUXAzBitiItWe5"
+const CLIENT_SECRET = "N882y5T9fbntN1dOy8ZecbNKpSOLafal3H5TXNxmk0G6Rg4eSvcF9uzRR7uIn7eUZbRVyGTkx7LUMos9CeVlb03anWF2ih8mfQaOgLa8OZjN8KA34zDsDOdHzPzDQTSb"
+const CLIENT_ID = "blGM0JnYq0vmglFGRNE5f06BOkvLcxIYPjocZsyC"
 
 export const AuthProvider = ({children}) => {
     let navigate = useNavigate()

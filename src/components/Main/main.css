@@ -1,3 +1,8 @@
+.main{
+    /* background-image: url('./main.gif');
+    background-repeat: no-repeat; */
+}
+
 .buttons{
     height: 100px;
     width: 600px;
@@ -7,4 +12,12 @@
     height: 100px;
     width: 300px;
     color: black;
+}
+
+
+.aboutus-image{
+    background-image: url('./aboutus.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }

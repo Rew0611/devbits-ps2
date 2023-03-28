@@ -19,8 +19,11 @@
     "react-dom": "^18.2.0",
     "react-google-button": "^0.7.2",
     "react-html-parser": "^2.0.2",
+    "react-icons": "^4.8.0",
     "react-router-dom": "^6.9.0",
     "react-scripts": "5.0.1",
+    "react-scroll": "^1.8.9",
+    "vanta": "^0.5.24",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
