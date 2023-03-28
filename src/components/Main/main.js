@@ -66,7 +66,7 @@ const Main = () => {
                         
                     </div>
                     <div className="flex items-center justify-center hexd"> 
-                    <video loop autoPlay muted playsinline className="max-h-[80%] max-w-[80%]">
+                    <video loop autoPlay muted playsinline className="max-h-[70%] max-w-[70%]">
                         <source
                             type="video/mp4"
                             src="https://i.imgur.com/erslMug.mp4"
