@@ -21,3 +21,48 @@
     background-repeat: no-repeat;
     background-position: center;
 }
+
+@media only screen and (max-width: 950px) {
+    .s1{
+        font-size: 3.5rem;
+    }
+    .s2{
+        font-size: 2.25rem;
+    }
+    .s3{
+        font-size: 1.5rem;
+    }
+  }
+@media only screen and (max-width: 750px) {
+    .s1{
+        font-size: 3.2rem;
+    }
+    .s2{
+        font-size: 2rem;
+    }
+    .s3{
+        font-size: 1.15rem;
+    }
+  }
+@media only screen and (max-width: 550px) {
+    .s1{
+        font-size: 3rem;
+    }
+    .s2{
+        font-size: 1.7rem;
+    }
+    .s3{
+        font-size: 1rem;
+    }
+  }
+@media only screen and (max-width: 450px) {
+    .s1{
+        font-size: 2.3rem;
+    }
+    .s2{
+        font-size: 1.3rem;
+    }
+    .s3{
+        font-size: 0.7rem;
+    }
+  }
