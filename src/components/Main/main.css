@@ -21,6 +21,17 @@
     background-repeat: no-repeat;
     background-position: center;
 }
+@media only screen and (max-width: 2950px) {
+    .s1{
+        font-size: 3.5rem;
+    }
+    .s2{
+        font-size: 2.50rem;
+    }
+    .s3{
+        font-size: 1.65rem;
+    }
+  }
 
 @media only screen and (max-width: 950px) {
     .s1{
@@ -66,3 +77,25 @@
         font-size: 0.7rem;
     }
   }
+@media only screen and (max-width: 950px) {
+   .rew
+   {
+    display: flex;
+    flex-direction: column;
+   }
+  }
+@media only screen and (max-width: 900px) and (min-width: 650) {
+   .rew
+   {
+    padding-top: 6rem;
+   }
+  }
+
+  @media only screen and (min-width: 1000px) {
+    .hexd
+    {
+     padding-top: 5rem;
+    }
+   }
+
+
