@@ -10,6 +10,7 @@ import Signup from './components/Signup/signup';
 import Dashboard from './components/Dashboard/dashboard';
 import GoogleMiddleware from './components/GoogleLogin/GoogleMiddleware';
 import { AuthProvider } from "./context/AuthContext";
+import News from "./components/News/News";
 
 const useStyles = makeStyles(() => ({
   App: {
@@ -21,6 +22,7 @@ const useStyles = makeStyles(() => ({
 
 function App() {
   const classes = useStyles();
+  const apiKey = "QTW1ALZB844B8JI2"
 
   return (
     <BrowserRouter>
@@ -33,6 +35,7 @@ function App() {
         <Route path="/login" element={<Login/>}/>
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/dashboard" element={<Dashboard/>}/>
+        <Route path="/news" element={<News apiKey={apiKey} section="home"/>}/>
         <Route path='/api/google/callback' element={<GoogleMiddleware />}/>
         <Route path="/coins/:id" element={<CoinPage/>} />
       </Routes> 

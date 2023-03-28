@@ -12,6 +12,7 @@ import {
   ThemeProvider,
 } from "@material-ui/core/styles";
 import { useNavigate } from "react-router-dom";
+import { Link as ScrollLink } from "react-scroll";
 // import { CryptoState } from "../CryptoContext";
 // import Logo from "../images/background.webp"
 import './header.css'
@@ -94,6 +95,27 @@ function Header() {
               className={classes.tpr}
             >
               Dashboard
+            </Typography>
+            <Typography
+              onClick={() => navigate(`/news`)}
+              variant="h8"
+              className={classes.tpr}
+            >
+              News
+            </Typography>
+            <Typography
+              // onClick={() => navigate(`/news`)}
+              variant="h8"
+              className={classes.tpr}
+            >
+            <a href="#contact">Contact</a>
+              {/* <ScrollLink
+                  to="contact"
+                  spy={true}
+                  smooth={true}
+              >
+                Contact
+              </ScrollLink> */}
             </Typography>
             </div>
             <Typography
