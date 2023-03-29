@@ -46,3 +46,19 @@
   color: white;
   cursor: pointer;
 }
+
+@media only screen and (max-width: 800px) {
+  .xw1
+  {
+   display:none ;
+  }
+ }
+@media only screen and (min-width: 800px) {
+  .dontx
+  {
+   display:none ;
+  }
+  .contx{
+    display: none;
+  }
+ }

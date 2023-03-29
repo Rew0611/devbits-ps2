@@ -79,6 +79,7 @@ function Header() {
   const symbol = "₹";
   const [nav, setnav] = useState(false);
   const [width, setwidth] = useState(false);
+  // const [dope, setdope] = useState(false);
   const updateWidth = () => {
     setwidth(window.innerWidth);
   };
@@ -91,12 +92,13 @@ function Header() {
     if (window.scrollY > 80) setnav(true);
     else setnav(false);
   };
-
+   
   window.addEventListener("scroll", changebg);
   // const history = useHistory();
   const navigate = useNavigate();
-  if (width > 800)
     return (
+      <>
+      <div className="xw1">
       <ThemeProvider theme={darkTheme}>
         <AppBar color="transparent" position="static">
           <Container className={nav ? classes.contx : classes.dontx}>
@@ -183,10 +185,8 @@ function Header() {
           </Container>
         </AppBar>
       </ThemeProvider>
-    );
-  else if(nav==false && width<=800) {
-    return (
-      <div className="dontx bg-transparent navbar sticky z-[1000]">
+      </div>
+      <div className={!nav? "dontx bg-transparent navbar sticky z-[1000]":"contx navbar sticky z-[1000]"}>
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -255,81 +255,82 @@ function Header() {
           <a className="logix"><Link to='/login'>Login</Link> </a>
         </div>
       </div>
+      </>
     );
   }
-  else{
-    return (
-      <div className="contx navbar sticky z-[1000]">
-        <div className="navbar-start">
-          <div className="dropdown">
-            <label tabIndex={0} className="btn btn-ghost lg:hidden">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h8m-8 6h16"
-                />
-              </svg>
-            </label>
-            <ul
-              tabIndex={0}
-              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
-            >
-              <li>
-                <a className="hotx">
-                  <Link to="/stock">Stocks</Link>
-                </a>
-              </li>
-              <li tabIndex={0}>
-                <a className="hotx justify-between">
-                  <Link to="/news">News</Link>
-                </a>
-              </li>
-              <li>
-                <a className="hotx">
-                  <Link to="/dashboard">Dashboard</Link>
-                </a>
-              </li>
-              <li tabIndex={0}>
-                <a className="hotx justify-between">
-                  <Link to="/signup">Sign up</Link>
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <a className="wex"><Link to='/'> Levi</Link></a>
-          </div>
-        </div>
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
-            <li>
-              <Link to="/stock"></Link>
-              <a>Stocks</a>
-            </li>
-            <li tabIndex={0}>
-              <Link to="/news"></Link>
-              <a>News</a>
-            </li>
-            <li>
-              <Link to="/dashboard"></Link>
-              <a>Dashboard</a>
-            </li>
-          </ul>
-        </div>
-        <div className="navbar-end">
-          <a className="logix"><Link to='/login'>Login</Link> </a>
-        </div>
-      </div>
-    );
-  }
-}
+  // else{
+  //   return (
+  //     <div className="contx navbar sticky z-[1000]">
+  //       <div className="navbar-start">
+  //         <div className="dropdown">
+  //           <label tabIndex={0} className="btn btn-ghost lg:hidden">
+  //             <svg
+  //               xmlns="http://www.w3.org/2000/svg"
+  //               className="h-5 w-5"
+  //               fill="none"
+  //               viewBox="0 0 24 24"
+  //               stroke="currentColor"
+  //             >
+  //               <path
+  //                 strokeLinecap="round"
+  //                 strokeLinejoin="round"
+  //                 strokeWidth="2"
+  //                 d="M4 6h16M4 12h8m-8 6h16"
+  //               />
+  //             </svg>
+  //           </label>
+  //           <ul
+  //             tabIndex={0}
+  //             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+  //           >
+  //             <li>
+  //               <a className="hotx">
+  //                 <Link to="/stock">Stocks</Link>
+  //               </a>
+  //             </li>
+  //             <li tabIndex={0}>
+  //               <a className="hotx justify-between">
+  //                 <Link to="/news">News</Link>
+  //               </a>
+  //             </li>
+  //             <li>
+  //               <a className="hotx">
+  //                 <Link to="/dashboard">Dashboard</Link>
+  //               </a>
+  //             </li>
+  //             <li tabIndex={0}>
+  //               <a className="hotx justify-between">
+  //                 <Link to="/signup">Sign up</Link>
+  //               </a>
+  //             </li>
+  //           </ul>
+  //         </div>
+  //         <div>
+  //           <a className="wex"><Link to='/'> Levi</Link></a>
+  //         </div>
+  //       </div>
+  //       <div className="navbar-center hidden lg:flex">
+  //         <ul className="menu menu-horizontal px-1">
+  //           <li>
+  //             <Link to="/stock"></Link>
+  //             <a>Stocks</a>
+  //           </li>
+  //           <li tabIndex={0}>
+  //             <Link to="/news"></Link>
+  //             <a>News</a>
+  //           </li>
+  //           <li>
+  //             <Link to="/dashboard"></Link>
+  //             <a>Dashboard</a>
+  //           </li>
+  //         </ul>
+  //       </div>
+  //       <div className="navbar-end">
+  //         <a className="logix"><Link to='/login'>Login</Link> </a>
+  //       </div>
+  //     </div>
+  //   );
+  // }
+// }
 
 export default Header;
