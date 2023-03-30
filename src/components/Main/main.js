@@ -110,7 +110,7 @@ const Main = () => {
                  {/* </div> */}
                 <Carousel/>
                 <Fina></Fina>
-                <Contact/>
+                {/* <Contact/> */}
                 </div>
             </>
         )

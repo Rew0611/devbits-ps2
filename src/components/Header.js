@@ -105,7 +105,7 @@ function Header() {
     <div className="xw1">
     <ThemeProvider theme={darkTheme}>
       <AppBar color="transparent" position="static">
-        <Container>
+        <Container className={nav ? classes.contx : classes.dontx}>
           <Toolbar>
             {/* <img src={Logo} alt="" /> */}
             {/* <Typography
