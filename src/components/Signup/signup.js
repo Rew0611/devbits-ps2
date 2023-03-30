@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import AuthContext from "../../context/AuthContext";
 import './signup.css'
 
 const REACT_APP_BASE_BACKEND_URL = "http://localhost:8000";
@@ -8,6 +9,12 @@ const REACT_APP_BASE_BACKEND_URL = "http://localhost:8000";
 const Signup = () => {
     const [formData, setformData] = useState({});
     const navigate = useNavigate();
+    const location = useLocation();
+    // console.log(location.state)
+
+    useEffect(()=>{
+      if (location.state)setformData({...formData, ["name"]: location.state.username, ["email"]: location.state.email})
+    }, [])
 
     const handleChange = (e) => {
         setformData({ ...formData, [e.target.name]: e.target.value });
@@ -15,7 +22,7 @@ const Signup = () => {
 
     async function handleSubmit(e) {
         e.preventDefault();
-    
+        console.log(formData)
         // await loginUser(formData.email, formData.password);
 
         if (formData.pass1 === formData.pass2) {
@@ -64,7 +71,8 @@ const Signup = () => {
                     <input
                     type="email"
                     onChange={handleChange}
-                    className="searchx block w-full mt-3 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                    className="searchx text-black block w-full mt-3 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                    value={formData.email}
                     name="email"
                     placeholder=""
                     required={true}
@@ -75,7 +83,8 @@ const Signup = () => {
                     <input
                     type="text"
                     onChange={handleChange}
-                    className="searchx block w-full mt-3 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                    value={formData.name}
+                    className="searchx text-black block w-full mt-3 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                     name="name"
                     placeholder=""
                     required={true}
@@ -84,9 +93,9 @@ const Signup = () => {
                 <label className="block w-6/12 min-w-[15rem]">
                     <span className="white whitespace-nowrap">Password</span>
                     <input
-                    type="text"
+                    type="password"
                     onChange={handleChange}
-                    className="searchx block w-full mt-3 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                    className="searchx text-black block w-full mt-3 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                     name="pass1"
                     placeholder=""
                     required={true}
@@ -95,9 +104,9 @@ const Signup = () => {
                 <label className="block w-6/12 min-w-[15rem]">
                     <span className="white whitespace-nowrap">Confirm Password</span>
                     <input
-                    type="text"
+                    type="password"
                     onChange={handleChange}
-                    className="searchx block w-full mt-3 mb-3 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                    className="searchx text-black block w-full mt-3 mb-3 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                     name="pass2"
                     placeholder=""
                     required={true}

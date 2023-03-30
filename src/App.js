@@ -25,23 +25,19 @@ function App() {
   const apiKey = process.env.REACT_APP_API_KEY
 
   return (
-    <BrowserRouter>
-    <AuthProvider>
       <div className={classes.App}>
         <Header />
-      <Routes>
-        <Route path="/" element={<Main/>}/>
-        <Route path="/stock" element={<Homepage/>} />
-        <Route path="/login" element={<Login/>}/>
-        <Route path="/signup" element={<Signup/>}/>
-        <Route path="/dashboard" element={<Dashboard/>}/>
-        <Route path="/news" element={<News apiKey={apiKey} section="home"/>}/>
-        <Route path='/api/google/callback' element={<GoogleMiddleware />}/>
-        <Route path="/coins/:id" element={<CoinPage/>} />
-      </Routes> 
-      </div>
-      </AuthProvider>
-    </BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Main/>}/>
+            <Route path="/stock" element={<Homepage/>} />
+            <Route path="/login" element={<Login/>}/>
+            <Route path="/signup" element={<Signup/>}/>
+            <Route path="/dashboard" element={<Dashboard/>}/>
+            <Route path="/news" element={<News apiKey={apiKey} section="home"/>}/>
+            <Route path='/api/google/callback' element={<GoogleMiddleware />}/>
+            <Route path="/coins/:id" element={<CoinPage/>} />
+          </Routes>
+      </div>    
   );
 }
 

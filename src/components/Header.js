@@ -14,7 +14,9 @@ import {
   ThemeProvider,
 } from "@material-ui/core/styles";
 import { useNavigate } from "react-router-dom";
+import {useContext} from "react";
 import { Link as ScrollLink } from "react-scroll";
+import AuthContext from "../context/AuthContext";
 // import { CryptoState } from "../CryptoContext";
 // import Logo from "../images/background.webp"
 import "./header.css";
@@ -96,14 +98,58 @@ function Header() {
   window.addEventListener("scroll", changebg);
   // const history = useHistory();
   const navigate = useNavigate();
-    return (
-      <>
-      <div className="xw1">
-      <ThemeProvider theme={darkTheme}>
-        <AppBar color="transparent" position="static">
-          <Container className={nav ? classes.contx : classes.dontx}>
-            <Toolbar>
-              {/* <img src={Logo} alt="" /> */}
+  let {userInfo, logoutUser} = useContext(AuthContext);
+
+  return (
+    <>
+    <div className="xw1">
+    <ThemeProvider theme={darkTheme}>
+      <AppBar color="transparent" position="static">
+        <Container>
+          <Toolbar>
+            {/* <img src={Logo} alt="" /> */}
+            {/* <Typography
+              onClick={() => navigate(`/`)}
+              variant="h4"
+              className={classes.title}
+            >
+              Levi
+            </Typography>
+            <div className={classes.hexor}>
+            <Typography
+              onClick={() => navigate(`/`)}
+              variant="h8"
+              className={classes.tpr}
+            >
+              About Us
+            </Typography>
+            <Typography
+              onClick={() => navigate(`/stock`)}
+              variant="h8"
+              className={classes.tpr}
+            >
+              Stocks
+            </Typography>
+            <Typography
+              onClick={() => navigate(`/dashboard`)}
+              variant="h8"
+              className={classes.tpr}
+            >
+              Dashboard
+            </Typography>
+            <Typography
+              onClick={() => navigate(`/news`)}
+              variant="h8"
+              className={classes.tpr}
+            >
+              News
+            </Typography>
+            <Typography
+              // onClick={() => navigate(`/news`)}
+              variant="h8"
+              className={classes.tpr}
+            >
+            <a href="#contact">Contact</a> */}
               <Typography
                 onClick={() => navigate(`/`)}
                 variant="h4"
@@ -153,24 +199,38 @@ function Header() {
               >
                 Contact
               </ScrollLink> */}
+            </Typography>
+            </div>
+            {userInfo==null ? (
+              <>
+                  <Typography
+                  onClick={() => navigate(`/login`)}
+                  variant="h7"
+                  className={classes.tps}
+                >
+                  Login
                 </Typography>
-              </div>
+                <Typography
+                  onClick={() => navigate(`/signup`)}
+                  variant="h7"
+                  className={classes.tps}
+                >
+                  Signup
+                </Typography>
+              </>
+            ) : (
               <Typography
-                onClick={() => navigate(`/login`)}
+                onClick={logoutUser}
                 variant="h7"
                 className={classes.tps}
               >
-                Login
+                Logout
               </Typography>
-              <Typography
-                onClick={() => navigate(`/signup`)}
-                variant="h7"
-                className={classes.tps}
-              >
-                Signup
-              </Typography>
-              {/* <Button color="inherit">Login</Button> */}
-              {/* <Select
+            )}
+            
+            
+            {/* <Button color="inherit">Login</Button> */}
+            {/* <Select
               variant="outlined"
               labelId="demo-simple-select-label"
               id="demo-simple-select"
