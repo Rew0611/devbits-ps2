@@ -12,7 +12,9 @@ import {
   ThemeProvider,
 } from "@material-ui/core/styles";
 import { useNavigate } from "react-router-dom";
+import {useContext} from "react";
 import { Link as ScrollLink } from "react-scroll";
+import AuthContext from "../context/AuthContext";
 // import { CryptoState } from "../CryptoContext";
 // import Logo from "../images/background.webp"
 import './header.css'
@@ -60,6 +62,7 @@ function Header() {
 
   // const history = useHistory();
   const navigate = useNavigate();
+  let {userInfo, logoutUser} = useContext(AuthContext);
 
   return (
     <ThemeProvider theme={darkTheme}>
@@ -118,20 +121,34 @@ function Header() {
               </ScrollLink> */}
             </Typography>
             </div>
-            <Typography
-              onClick={() => navigate(`/login`)}
-              variant="h7"
-              className={classes.tps}
-            >
-              Login
-            </Typography>
-            <Typography
-              onClick={() => navigate(`/signup`)}
-              variant="h7"
-              className={classes.tps}
-            >
-              Signup
-            </Typography>
+            {userInfo==null ? (
+              <>
+                  <Typography
+                  onClick={() => navigate(`/login`)}
+                  variant="h7"
+                  className={classes.tps}
+                >
+                  Login
+                </Typography>
+                <Typography
+                  onClick={() => navigate(`/signup`)}
+                  variant="h7"
+                  className={classes.tps}
+                >
+                  Signup
+                </Typography>
+              </>
+            ) : (
+              <Typography
+                onClick={logoutUser}
+                variant="h7"
+                className={classes.tps}
+              >
+                Logout
+              </Typography>
+            )}
+            
+            
             {/* <Button color="inherit">Login</Button> */}
             {/* <Select
               variant="outlined"

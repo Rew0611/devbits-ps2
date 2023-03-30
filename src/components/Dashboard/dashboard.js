@@ -3,50 +3,90 @@ import React from "react";
 import './dashboard.css'
 import TransactionCard from "./transactionCard";
 import WatchlistCard from "./watchlistCard";
+import {useNavigate} from "react-router-dom"
+import {useEffect, useContext, useState} from "react";
+import axios from "axios";
+import AuthContext from "../../context/AuthContext";
 // import Graph from "../Graph/graph";
 
 const Dashboard = () => {
-    const stockList = [
-        {
-            title: "Card Title",
-            desc: "Some quick example text to build on the card title and make up the bulk of the card's content."
-        },
-        {
-            title: "Card Title",
-            desc: "Some quick example text to build on the card title and make up the bulk of the card's content."
-        },
-        {
-            title: "Card Title",
-            desc: "Some quick example text to build on the card title and make up the bulk of the card's content."
-        },
-        {
-            title: "Card Title",
-            desc: "Some quick example text to build on the card title and make up the bulk of the card's content."
-        },
-        {
-            title: "Card Title",
-            desc: "Some quick example text to build on the card title and make up the bulk of the card's content."
-        },
-        {
-            title: "Card Title",
-            desc: "Some quick example text to build on the card title and make up the bulk of the card's content."
-        },
-        {
-            title: "Card Title",
-            desc: "Some quick example text to build on the card title and make up the bulk of the card's content."
-        },
-        {
-            title: "Card Title",
-            desc: "Some quick example text to build on the card title and make up the bulk of the card's content."
-        },
-        {
-            title: "Card Title",
-            desc: "Some quick example text to build on the card title and make up the bulk of the card's content."
+    let {userInfo, authTokens} = useContext(AuthContext);
+    const [stockList, setStockList] = useState([])
+    const [transactionList, setTransactionList] = useState([]);
+    const [watchlist, setWatchlist] = useState([]);
+
+    const navigate = useNavigate();
+
+    // const stockList = [
+    //     {
+    //         title: "Card Title",
+    //         desc: "Some quick example text to build on the card title and make up the bulk of the card's content."
+    //     },
+    //     {
+    //         title: "Card Title",
+    //         desc: "Some quick example text to build on the card title and make up the bulk of the card's content."
+    //     },
+    //     {
+    //         title: "Card Title",
+    //         desc: "Some quick example text to build on the card title and make up the bulk of the card's content."
+    //     },
+    //     {
+    //         title: "Card Title",
+    //         desc: "Some quick example text to build on the card title and make up the bulk of the card's content."
+    //     },
+    //     {
+    //         title: "Card Title",
+    //         desc: "Some quick example text to build on the card title and make up the bulk of the card's content."
+    //     },
+    //     {
+    //         title: "Card Title",
+    //         desc: "Some quick example text to build on the card title and make up the bulk of the card's content."
+    //     },
+    //     {
+    //         title: "Card Title",
+    //         desc: "Some quick example text to build on the card title and make up the bulk of the card's content."
+    //     },
+    //     {
+    //         title: "Card Title",
+    //         desc: "Some quick example text to build on the card title and make up the bulk of the card's content."
+    //     },
+    //     {
+    //         title: "Card Title",
+    //         desc: "Some quick example text to build on the card title and make up the bulk of the card's content."
+    //     }
+    // ]
+
+    useEffect(()=>{
+        if (userInfo){
+            console.log(userInfo);
+            setWatchlist(userInfo.watchlist);
+            console.log(watchlist);
+            axios.get("http://localhost:8000/get-users-stock/", {
+                headers: {
+                    'Authorization': `Bearer ${authTokens.access}`
+                }
+            }).then((res)=>{
+                console.log(res);
+                setStockList(res.data);
+            }).catch((err)=>{
+                console.log(err);
+            })
+            axios.get("http://localhost:8000/get-transactions/", {
+                headers: {
+                    'Authorization': `Bearer ${authTokens.access}`
+                }
+            }).then((res)=>{
+                console.log(res);
+                setTransactionList(res.data);
+            }).catch((err)=>{
+                console.log(err);
+            })
         }
-    ]
+    }, [userInfo])
+
     return (
         <>
-            <div className="flex justify-center bg-[#000000] w-full dashboard-main">
+            <div className="flex justify-center bg-[#000000] h-[90%] w-full dashboard-main">
                 <div className="watchlist flex flex-col overflow-auto p-6">
                     <div className="my-stocks-heading text-2xl text-white m-5">MY WATCHLIST</div>
                     {stockList.map((data) => {
@@ -59,14 +99,14 @@ const Dashboard = () => {
                         <div className="my-stocks-heading text-6xl text-white m-5">MY STOCKS</div>
                         <div className="current-stocks flex justify-center items-center flex-wrap mb-10">
                             {stockList.map((data) => {
-                                return <StockCard title={data.title} desc={data.desc} />
+                                return <StockCard title={data.stock_name} quantity={data.quantity} />
                             })}
                         </div>
                         <div className="transactions flex flex-col">
                             <div className="text-6xl text-white m-5">TRANSACTIONS</div>
-                            <div>
-                            {stockList.map((data) => {
-                                return <TransactionCard title={data.title} desc={data.desc} />
+                            <div className="current-stocks flex justify-center items-center flex-wrap mb-10">
+                            {transactionList.map((data) => {
+                                return <TransactionCard title={data.stock_name} price={data.price} quantity={data.quantity} operation={data.operation} />
                             })}
                             </div>
                         </div>

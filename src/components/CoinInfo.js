@@ -28,8 +28,8 @@ const CoinInfo = ({ coin }) => {
       flexDirection: "column",
       alignItems: "center",
       justifyContent: "center",
-      marginTop: 25,
-      padding: 40,
+      marginTop: 0,
+      padding: 20,
       [theme.breakpoints.down("md")]: {
         width: "100%",
         marginTop: 0,
@@ -104,15 +104,15 @@ const CoinInfo = ({ coin }) => {
                 },
               }}
             />
-            <div
+            {/* <div
               style={{
                 display: "flex",
                 marginTop: 20,
                 justifyContent: "space-around",
                 width: "100%",
               }}
-            >
-              {chartDays.map((day) => (
+            > */}
+              {/* {chartDays.map((day) => (
                 <SelectButton
                   key={day.value}
                   onClick={() => {setDays(day.value);
@@ -123,8 +123,8 @@ const CoinInfo = ({ coin }) => {
                 >
                   {day.label}
                 </SelectButton>
-              ))}
-            </div>
+              ))} */}
+            {/* </div> */}
           </>
         )}
       </div>

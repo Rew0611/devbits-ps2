@@ -6,7 +6,7 @@ import axios from 'axios';
 
 function GoogleMiddleware() {
     const [searchParams, setSearchParams] = useSearchParams();
-    const { setAuthTokens } = useContext(AuthContext);
+    const { setAuthTokens} = useContext(AuthContext);
     const navigate = useNavigate();
     // const {REACT_APP_BASE_BACKEND_URL} = process.env;
     let code = searchParams.get("code")
@@ -23,12 +23,22 @@ function GoogleMiddleware() {
                 }
             }).then((res)=>{
                 console.log(res);
-                setAuthTokens(res.data)
-                localStorage.setItem('authTokens', JSON.stringify(res.data))
+                if (res.data.access!=null){
+                    console.log(res.data);
+                    localStorage.setItem('authTokens', JSON.stringify(res.data))
+                    setAuthTokens(res.data);
+                    navigate("/");
+                }
+                else{
+                    navigate("/signup", {state:{username: res.data.data.name, email: res.data.data.email}});
+                }
+                // setAuthTokens(res.data)
+                
                 // setGoogleCompleteProfile(true)
-                navigate("/")
+                // navigate("/")
             }).catch((e)=>{
                 console.log(e);
+                // if (e.stat)
             })
         }
         catch(error){

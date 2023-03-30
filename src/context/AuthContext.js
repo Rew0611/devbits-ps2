@@ -41,12 +41,12 @@ export const AuthProvider = ({children}) => {
 
     let loginUser = async (email, password)=> {
         try{
-            axios.post(`${BACKEND_URL}/auth/token`, {
-                username:email,
+            axios.post(`${BACKEND_URL}/gettoken/`, {
+                email:email,
                 password:password,
-                grant_type:"password",
-                client_secret: CLIENT_SECRET,
-                client_id: CLIENT_ID
+                // grant_type:"password",
+                // client_secret: CLIENT_SECRET,
+                // client_id: CLIENT_ID
             }, {
                 headers:{
                     'Content-Type':'application/json',
@@ -58,7 +58,7 @@ export const AuthProvider = ({children}) => {
                 setAuthTokens(data)
                 localStorage.setItem('authTokens', JSON.stringify(data))
 
-                navigate("/dashboard")
+                navigate("/")
                 console.log("logged in successfully");
             }).catch((e)=>{
                 console.log(e);
@@ -90,14 +90,18 @@ export const AuthProvider = ({children}) => {
 
     let logoutUser = () => {
         clearTokens()
+        setUserInfo(null);
         console.log("logged out");
         navigate("/")
     }
 
     let refreshTokens = async() => {
+        var tokens = localStorage.getItem("authTokens");
+        tokens = JSON.parse(tokens)
+        console.log(authTokens)
         try {
-            const response = await axios.post(`${BACKEND_URL}/api/token/refresh/`, {
-                refresh: authTokens?.refresh
+            const response = await axios.post(`${BACKEND_URL}/refreshtoken/`, {
+                refresh: tokens?.refresh
               });
          
             if(response.status == 200) {
@@ -130,9 +134,22 @@ export const AuthProvider = ({children}) => {
     useEffect(()=> {  
         if(loading) {
             // will be executed on first try only
-            if(authTokens) {
-                refreshTokens();           
-            }
+            
+            // if (tokens){
+            //     tokens = JSON.parse(tokens)
+            //     setAuthTokens(tokens);
+                refreshTokens();
+            // }
+            
+            // let tokens = localStorage.getItem("authTokens");
+            // console.log(tokens)
+            // if(tokens!=null) {
+            //     tokens=JSON.parse(tokens);
+            //     console.log(tokens)
+            //     setAuthTokens(tokens);
+            //     setInfoFromToken(tokens.access);
+            //     // refreshTokens();           
+            // }
             setLoading(false)
         }
 
@@ -140,7 +157,7 @@ export const AuthProvider = ({children}) => {
             // does not run on first load
             if(authTokens){            
                 if(!userInfo){
-                    setInfoFromToken(authTokens.access_token);
+                    setInfoFromToken(authTokens.access);
                 }
             }
         }
