@@ -38,6 +38,32 @@ const Main = () => {
             if (vantaEffect)vantaEffect.destroy()
         }
     }, [vantaEffect])
+    const vantaRef2 = useRef(null);
+    useEffect(()=>{
+        if (!vantaEffect){
+        setVantaEffect(
+            NETS({
+            el: vantaRef2.current,
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: 0xffffff,
+            backgroundColor: 0x1,
+            points: 11.00,
+            maxDistance: 0,
+            spacing: 18.00
+            // THREE
+            })
+        )
+        }
+        return () => {
+            if (vantaEffect)vantaEffect.destroy()
+        }
+    }, [vantaEffect])
     const [width, setwidth] = useState(false);
     const [x, setx] = useState(false);
     const updateWidth = () => {
@@ -65,7 +91,7 @@ const Main = () => {
                         {/* <div className="main-heading3 text-2xl"></div> */}
                         
                     </div>
-                    <div className="flex items-center justify-center hexd"> 
+                    <div className="flex items-center justify-center hexd" > 
                     <video loop autoPlay muted playsinline className="max-h-[70%] max-w-[70%]">
                         <source
                             type="video/mp4"
@@ -76,35 +102,24 @@ const Main = () => {
                         ></source>
                     </video>
                     </div> 
-                    {/* <div className="scroll-down-arrow"> */}
-                        {/* <ScrollLink
-                            to="about"
-                            spy={true}
-                            smooth={true}
-                        > */}
-                        {/* <img src={mouse} alt="mouse"></img> */}
-                        {/* <IoIosArrowDown/> */}
-                        {/* </ScrollLink> */}
-                    {/* </div> */}
-                {/* <div className="buttons">
-                {!userInfo ? (
-                    <>
-                    <a href="/login"><button>LOGIN</button></a>
-                    <a href="/signup"><button>SIGN UP</button></a>
-                    </>
-                ) : (
-                    <button onClick={logoutUser}>LOGOUT</button>
-                )}
-                    
-                </div> */}
                 </div>
-                <div className="about-us flex h-[90vh] flex-shrink-0 justify-evenly">
+                <div className="about-us flex justify-center items-center h-[90vh] flex-shrink-0 justify-evenly" ref={vantaRef2}>
+                    
+                    <div className="aboutus-image flex  h-[40vh] w-[40vw]">
+                        {/* <img src="D:\Devbits\devbits-ps2\src\components\Main\aboutus.png" height="200px" width={"200px"}/> */}
+                        <video loop autoPlay muted playsinline className="">
+                            <source
+                                type="video/mp4"
+                                src="https://i.imgur.com/1nE7Tg6.mp4"
+                                // src="https://i.imgur.com/p3ZslcL.mp4"
+                                // src="https://i.imgur.com/Dv7Cood.mp4"
+                                // src="https://i.imgur.com/FVEh1Jf.mp4"
+                            ></source>
+                        </video>
+                    </div>
                     <div className="flex flex-col w-[60vw] ml-8">            
                         <div className="aboutus-heading text-white text-5xl my-7">ABOUT US</div>
                         <div className="aboutus-content text-white text-2xl">At Binance, we believe that everyone should have the freedom to earn, hold, spend, share and give their money - no matter who you are or where you come from.</div>
-                    </div>
-                    <div className="aboutus-image flex  h-[40vh] w-[30vw]">
-                        {/* <img src="D:\Devbits\devbits-ps2\src\components\Main\aboutus.png" height="200px" width={"200px"}/> */}
                     </div>
                 </div>
                 <Carousel/>

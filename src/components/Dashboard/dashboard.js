@@ -10,57 +10,26 @@ import AuthContext from "../../context/AuthContext";
 // import Graph from "../Graph/graph";
 
 const Dashboard = () => {
-    let {userInfo, authTokens} = useContext(AuthContext);
+    let {userInfo, authTokens, setAuthTokens} = useContext(AuthContext);
     const [stockList, setStockList] = useState([])
     const [transactionList, setTransactionList] = useState([]);
     const [watchlist, setWatchlist] = useState([]);
 
     const navigate = useNavigate();
 
-    // const stockList = [
-    //     {
-    //         title: "Card Title",
-    //         desc: "Some quick example text to build on the card title and make up the bulk of the card's content."
-    //     },
-    //     {
-    //         title: "Card Title",
-    //         desc: "Some quick example text to build on the card title and make up the bulk of the card's content."
-    //     },
-    //     {
-    //         title: "Card Title",
-    //         desc: "Some quick example text to build on the card title and make up the bulk of the card's content."
-    //     },
-    //     {
-    //         title: "Card Title",
-    //         desc: "Some quick example text to build on the card title and make up the bulk of the card's content."
-    //     },
-    //     {
-    //         title: "Card Title",
-    //         desc: "Some quick example text to build on the card title and make up the bulk of the card's content."
-    //     },
-    //     {
-    //         title: "Card Title",
-    //         desc: "Some quick example text to build on the card title and make up the bulk of the card's content."
-    //     },
-    //     {
-    //         title: "Card Title",
-    //         desc: "Some quick example text to build on the card title and make up the bulk of the card's content."
-    //     },
-    //     {
-    //         title: "Card Title",
-    //         desc: "Some quick example text to build on the card title and make up the bulk of the card's content."
-    //     },
-    //     {
-    //         title: "Card Title",
-    //         desc: "Some quick example text to build on the card title and make up the bulk of the card's content."
-    //     }
-    // ]
-
     useEffect(()=>{
         if (userInfo){
-            console.log(userInfo);
-            setWatchlist(userInfo.watchlist);
-            console.log(watchlist);
+            axios.get("http://localhost:8000/get-watchlist/", {
+                headers: {
+                    'Authorization': `Bearer ${authTokens.access}`
+                }
+            }).then((res)=>{
+                console.log(res);
+                setWatchlist(res.data);
+            }).catch((err)=>{
+                setAuthTokens(null);
+                console.log(err);
+            })
             axios.get("http://localhost:8000/get-users-stock/", {
                 headers: {
                     'Authorization': `Bearer ${authTokens.access}`
@@ -69,6 +38,7 @@ const Dashboard = () => {
                 console.log(res);
                 setStockList(res.data);
             }).catch((err)=>{
+                setAuthTokens(null);
                 console.log(err);
             })
             axios.get("http://localhost:8000/get-transactions/", {
@@ -79,6 +49,7 @@ const Dashboard = () => {
                 console.log(res);
                 setTransactionList(res.data);
             }).catch((err)=>{
+                setAuthTokens(null);
                 console.log(err);
             })
         }
@@ -89,8 +60,8 @@ const Dashboard = () => {
             <div className="pt-12 flex justify-center bg-[#000000] w-full dashboard-main">
                 <div className="watchlist flex flex-col overflow-auto p-6">
                     <div className="my-stocks-heading text-2xl text-white m-5">MY WATCHLIST</div>
-                    {stockList.map((data) => {
-                        return <WatchlistCard title={data.title} desc={"hello my name is anant jain"} />
+                    {watchlist.map((data) => {
+                        return <WatchlistCard title={data.code_name} desc={data.full_name} />
                     })}
                 </div>
                 {/* <Graph/> */}
@@ -126,7 +97,7 @@ const Dashboard = () => {
                     <div className="my-5">
                         <div class="mt-3 text-white text-2xl">
                             <span class="text-gray-400 font-semibold">BALANCE:</span>
-                            <span className="ml-4">1000000</span>
+                            <span className="ml-4">{userInfo.curamount}</span>
                         </div>
                         <div class="mt-3 text-white text-2xl">
                             <span class="text-gray-400 font-semibold">INVESTED:</span>
@@ -134,22 +105,22 @@ const Dashboard = () => {
                         </div>
                         <div class="mt-3 text-white text-2xl">
                             <span class="text-gray-400 font-semibold">GAIN:</span>
-                            <span className="ml-4">3000</span>
+                            <span className="ml-4">{userInfo.gain}</span>
                         </div>
                         <div class="mt-3 text-white text-2xl">
                             <span class="text-gray-400 font-semibold">LOSS:</span>
-                            <span className="ml-4">1000</span>
+                            <span className="ml-4">{userInfo.loss}</span>
                         </div>
                     </div>
                     <div class="mt-3 text-white text-2xl">
                         <span class="text-gray-400 font-semibold">Account Opened On:</span>
                         <br/>
-                        <span className="ml-2">10th March, 2023</span>
+                        <span className="ml-2">{userInfo.acc_date}</span>
                     </div>
                     <div class="mt-3 text-white text-2xl">
                         <span class="text-gray-400 font-semibold">Total Earnings Till Now:</span>
                         <br/>
-                        <span className="ml-2">10000</span>
+                        <span className="ml-2">{userInfo.total_earnings}</span>
                     </div>
                 </div>
             </div>

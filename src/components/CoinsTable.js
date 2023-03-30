@@ -39,10 +39,11 @@ export default function CoinsTable() {
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
   const [open, setOpen] = useState(null);
+  const [watchlist, setWatchlist] = useState([]);
   let {userInfo, authTokens} = useContext(AuthContext);
 
   const navigate = useNavigate();
-  let watchlist = {};
+  // let watchlist = {};
   // const { currency, symbol } = CryptoState();
   const currency = "INR";
   const symbol = "₹";
@@ -81,35 +82,6 @@ export default function CoinsTable() {
     setLoading(true);
     const { data } = await axios.get(CoinList(currency));
     console.log(data);
-    data.map((item)=>{
-      watchlist[item.symbol.toUpperCase()] = 0;
-    })
-    // console.log(userInfo.watchlist)
-    // userInfo.watchlist.map((id) => {
-    //   console.log(id);
-    //   axios.get("http://localhost:8000/get-stock/",{
-    //     id: id
-    //   },{
-    //     headers:{
-    //       'Authorization': `Bearer ${authTokens.access}`
-    //     }
-    //   }).then((res)=>{
-    //     console.log(res);
-    //   }).catch((err)=>{
-    //     console.log(err);
-    //   })
-    // })
-    // data.map((item) => {
-    //   axios.post("http://localhost:8000/add-stock/",{
-    //     full_name: item.name,
-    //     code_name: item.symbol.toUpperCase(),
-    //     image: item.image
-    //   },{
-    //     headers: {
-    //       'Authorization': `Bearer ${authTokens.access_token}` 
-    //     }
-    //   })
-    // })
     setCoins(data);
     setLoading(false);
   };
@@ -141,6 +113,9 @@ export default function CoinsTable() {
   // }
 
   const addToWatchlist = (code) => {
+    console.log(code)
+    console.log(watchlist[code])
+    console.log(authTokens)
     axios.post("http://localhost:8000/add-watchlist/",{
         code: code
     },{
@@ -149,14 +124,14 @@ export default function CoinsTable() {
       }
     }).then((res)=>{
       console.log(res);
-      watchlist[code]=1;
+      console.log("stock added to watchlist")
     }).catch((err)=>{
       console.log(err);
     })
   }
 
   const buyCoins = (e, stockname, price) => {
-    console.log(authTokens.access_token)
+    console.log(authTokens.access)
     e.preventDefault()
     axios.post("http://localhost:8000/buy-stock/",{
       stockname: stockname,
@@ -210,7 +185,7 @@ export default function CoinsTable() {
             <Table aria-label="simple table">
               <TableHead className="tabx">
                 <TableRow>
-                  {["Coin", "Price", "24h Change", "Market Cap", ""].map((head) => (
+                  {["Coin", "Price", "24h Change", "Market Cap"].map((head) => (
                     <TableCell
                       style={{
                         color: "black",
@@ -292,15 +267,7 @@ export default function CoinsTable() {
                             row.market_cap.toString().slice(0, -6)
                           )}
                           M
-                        </TableCell>
-                        <TableCell align="right">
-                          <button className="text-xl" 
-                          // onClick={()=>addToWatchlist(row.symbol.toUpperCase())}
-                          >
-                              <span className="star">&#9733;</span>
-                          </button>                 
-                        </TableCell>
-                        
+                        </TableCell>                        
                       </TableRow>
                       {(open === row.id) && (
                         <TableRow padding={0}>
@@ -321,6 +288,7 @@ export default function CoinsTable() {
                                 <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
                               </form>
                               {(buysuccess===1) && <div className="text-xl text-green-200">Coins Bought Successfully</div>}
+                              <button onClick={()=>addToWatchlist(row.symbol.toUpperCase())} class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add to watchlist</button>
                               </TableCell>
                             {/* </div> */}
                             {/* <TableCell>

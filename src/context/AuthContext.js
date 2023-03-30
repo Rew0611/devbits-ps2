@@ -160,6 +160,9 @@ export const AuthProvider = ({children}) => {
                     setInfoFromToken(authTokens.access);
                 }
             }
+            else {
+                refreshTokens();
+            }
         }
 
     }, [authTokens])
