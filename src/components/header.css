@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;800&display=swap");
 .nav-itemx{
     display: flexbox;
     flex-direction: row;
@@ -7,3 +8,57 @@
 .tpr{
     padding-left: 10px;
 }
+.wex{
+  color: white;
+  font-family: Montserrat;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 2rem;
+}
+.contx{
+  /* position:fixed; */
+  top: 0;
+  z-index:1000;
+  background-color: rgba( 255, 255, 255, 0.2 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 3.5px );
+  -webkit-backdrop-filter: blur( 3.5px );
+  border-radius: 1px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  /* min-width: 100%; */
+}
+.dontx{
+  /* position: static; */
+  top: 0;
+  z-index: 1000;
+  background: transparent;
+  /* margin-bottom: 0; */
+}
+.logix{
+  padding-right: 2rem;
+  font-family:  Montserrat;
+  font-weight: 100;
+  color: white;
+}
+.hotx{
+  font-family: Montserrat;
+  font-weight: 100;
+  color: white;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 800px) {
+  .xw1
+  {
+   display:none ;
+  }
+ }
+@media only screen and (min-width: 800px) {
+  .dontx
+  {
+   display:none ;
+  }
+  .contx{
+    display: none;
+  }
+ }

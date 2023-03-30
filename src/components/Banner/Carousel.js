@@ -4,9 +4,10 @@ import { useEffect, useState } from "react";
 import AliceCarousel from "react-alice-carousel";
 import { Link } from "react-router-dom";
 import { TrendingCoins } from "../../config/api";
+import CoinInfo2 from "../CoinInfo";
 // import { CryptoState } from "../../CryptoContext";
 import { numberWithCommas } from "../CoinsTable";
-
+import './carousel.css'
 const Carousel = () => {
   const [trending, setTrending] = useState([]);
   // const { currency, symbol } = CryptoState();
@@ -36,6 +37,8 @@ const Carousel = () => {
       cursor: "pointer",
       textTransform: "uppercase",
       color: "white",
+      paddingTop:"20px",
+      paddingBottom:"2rem"
     },
   }));
 
@@ -51,7 +54,9 @@ const Carousel = () => {
           alt={coin.name}
           height="80"
           style={{ marginBottom: 10 }}
+          className="carimg"
         />
+        {/* <CoinInfo2 coin={coin} /> */}
         <span>
           {coin?.symbol}
           &nbsp;

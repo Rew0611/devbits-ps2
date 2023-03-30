@@ -22,7 +22,7 @@ const useStyles = makeStyles(() => ({
 
 function App() {
   const classes = useStyles();
-  const apiKey = "QTW1ALZB844B8JI2"
+  const apiKey = process.env.REACT_APP_API_KEY
 
   return (
       <div className={classes.App}>

@@ -86,7 +86,7 @@ const Dashboard = () => {
 
     return (
         <>
-            <div className="flex justify-center bg-[#000000] h-[90%] w-full dashboard-main">
+            <div className="pt-12 flex justify-center bg-[#000000] w-full dashboard-main">
                 <div className="watchlist flex flex-col overflow-auto p-6">
                     <div className="my-stocks-heading text-2xl text-white m-5">MY WATCHLIST</div>
                     {stockList.map((data) => {

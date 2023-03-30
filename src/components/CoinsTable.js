@@ -2,6 +2,9 @@ import React, { useEffect, useState, useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Pagination from "@material-ui/lab/Pagination";
 import "./coins.css";
+import { StyleRoot } from "radium";
+import Radium from "radium";
+import {useMediaQuery} from "@material-ui/core";
 import {
   Container,
   createTheme,
@@ -43,6 +46,8 @@ export default function CoinsTable() {
   // const { currency, symbol } = CryptoState();
   const currency = "INR";
   const symbol = "₹";
+
+  const matches = useMediaQuery('(min-width:800px)');
 
   const useStyles = makeStyles({
     row: {
@@ -123,6 +128,17 @@ export default function CoinsTable() {
         coin.symbol.toLowerCase().includes(search)
     );
   };
+  // const hyle = {
+  //   '@media (max-width: 800px)': {
+  //      marginTop:"2rem",
+  //      textAlign: "center",
+  //   },
+  //   '@media (min-width: 800px)': {
+  //      marginTop:"6rem",
+  //      textAlign: "center",
+  //   },
+
+  // }
 
   const addToWatchlist = (code) => {
     axios.post("http://localhost:8000/add-watchlist/",{
@@ -164,8 +180,10 @@ export default function CoinsTable() {
   }
 
   return (
+    <StyleRoot>
+    <div>
     <ThemeProvider theme={darkTheme}>
-      <Container style={{ textAlign: "center" }}>
+      <Container style={matches?{marginTop:"6rem",textAlign: "center"}:{marginTop:"2rem",textAlign: "center"}}>
         <Typography
           variant="h4"
           style={{ margin: 18, fontFamily: "Montserrat" }}
@@ -335,5 +353,7 @@ export default function CoinsTable() {
         />
       </Container>
     </ThemeProvider>
+    </div>
+    </StyleRoot>
   );
-}
+        }

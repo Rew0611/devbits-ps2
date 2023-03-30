@@ -63,7 +63,7 @@ const Signup = () => {
         <>
             <form
                 onSubmit={handleSubmit}
-                className="flex flex-col mt-20 space-y-5 mb-20 justify-center items-center px-10 w-[100%]"
+                className="flex flex-col pt-6 mt-20 space-y-5 mb-20 justify-center items-center px-10 w-[100%]"
                 >
 
                 <label className="block w-6/12 min-w-[15rem]">

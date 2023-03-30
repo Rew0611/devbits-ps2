@@ -34,6 +34,7 @@ const CoinPage = () => {
         flexDirection: "column",
         alignItems: "center",
       },
+      marginTop:"2.5rem"
     },
     sidebar: {
       width: "30%",
@@ -80,7 +81,7 @@ const CoinPage = () => {
 
   const classes = useStyles();
 
-  if (!coin) return <LinearProgress style={{ backgroundColor: "gold" }} />;
+  if (!coin) return <LinearProgress style={{ backgroundColor: "gold",marginTop:"4rem" }} />;
 
   return (
     <div className={classes.container}>
