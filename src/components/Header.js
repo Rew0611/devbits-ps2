@@ -187,6 +187,13 @@ function Header() {
                   News
                 </Typography>
                 <Typography
+                  onClick={() => navigate(`/know`)}
+                  variant="h8"
+                  className={classes.tpr}
+                >
+                  Know
+                </Typography>
+                <Typography
                   // onClick={() => navigate(`/news`)}
                   variant="h8"
                   className={classes.tpr}
