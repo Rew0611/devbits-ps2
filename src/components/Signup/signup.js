@@ -3,6 +3,8 @@ import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 import './signup.css'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const BACKEND_URL = process.env.REACT_APP_BASE_BACKEND_URL ;
 
@@ -41,6 +43,16 @@ const Signup = () => {
               if (response.status === 201) {
                 console.log("Successfull registration");
                 navigate("/");
+                toast.success('Registered successfully, You can Log In now', {
+                  position: "top-center",
+                  autoClose: 3000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined,
+                  theme: "light",
+                  });
               } else if (response.status === 406) {
                 console.log(response.data.msg);
               } else if (response.status === 226) {
@@ -50,11 +62,31 @@ const Signup = () => {
             })
             .catch((error) => {
               console.log("server error!!");
+              toast.error('Something Went Wrong', {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                });
             //   setRequesting(false);
             });
         } else {
           alert("password and confirm password should be same");
         //   setRequesting(false);
+        toast.error('Password and Confirm Password does not match', {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
         }
         // setRequesting(false);
       }

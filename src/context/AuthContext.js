@@ -1,6 +1,8 @@
 import { createContext, useState, useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AuthContext = createContext()
 
@@ -60,8 +62,28 @@ export const AuthProvider = ({children}) => {
 
                 navigate("/")
                 console.log("logged in successfully");
+                toast.success('Logged in successfully!', {
+                    position: "top-center",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    });
             }).catch((e)=>{
                 console.log(e);
+                toast.error('Something Went Wrong!', {
+                    position: "top-center",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    });
             })
             
             // console.log(data)

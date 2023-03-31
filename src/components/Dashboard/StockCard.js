@@ -4,6 +4,8 @@ import { useContext, useState, useEffect } from "react";
 import AuthContext from "../../context/AuthContext";
 import axios from "axios";
 import { SingleCoin } from "../../config/api";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const StockCard = (props) => {
     const [selling, setSelling] = useState(false);
@@ -46,8 +48,28 @@ const StockCard = (props) => {
         }).then((res)=>{
             console.log(res.data);
             window.location.reload()
+            toast.success('Coins Sold Successfully!!', {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                });
         }).catch((err)=>{
             console.log(err);
+            toast.error('Something Went Wrong!', {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                });
         })
     }
     return (

@@ -25,6 +25,8 @@ import CoinInfo from "./CoinInfo";
 import { CoinList } from "../config/api";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 // import { CryptoState } from "../CryptoContext";
 
 export function numberWithCommas(x) {
@@ -127,8 +129,28 @@ export default function CoinsTable() {
     }).then((res)=>{
       console.log(res);
       console.log("stock added to watchlist")
+      toast.success('Stock Added in watchlist!', {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
     }).catch((err)=>{
       console.log(err);
+      toast.error(err, {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
     })
   }
 
@@ -152,15 +174,44 @@ export default function CoinsTable() {
       // }
     }).then((res)=>{
       if (res.data["msg"]=="Insufficient Balance"){
-        console.log("Insufficient Balance");
+        toast.error('Insufficient Balance', {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
       }
       else{
         console.log(res)
         console.log("Coins Bought");
         setBuySuccess(1);
+        toast.success('Coins Bought successfully!', {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
       }
     }).catch((err)=>{
       console.log(err);
+      toast.error('Something Went Wrong', {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
     })
   }
 
