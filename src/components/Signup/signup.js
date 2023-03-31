@@ -2,7 +2,10 @@ import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
-import "./signup.css";
+
+import './signup.css'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const BACKEND_URL = process.env.REACT_APP_BASE_BACKEND_URL;
 
@@ -31,39 +34,69 @@ const Signup = () => {
     console.log(formData);
     // await loginUser(formData.email, formData.password);
 
-    if (formData.pass1 === formData.pass2) {
-      let data = {
-        username: formData.name,
-        email: formData.email,
-        password: formData.pass1,
-      };
-      axios
-        .post(`${BACKEND_URL}register/`, data, {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
-        .then((response) => {
-          if (response.status === 201) {
-            console.log("Successfull registration");
-            navigate("/");
-          } else if (response.status === 406) {
-            console.log(response.data.msg);
-          } else if (response.status === 226) {
-            console.log(response.data.msg);
-          }
-          //   setRequesting(false);
-        })
-        .catch((error) => {
-          console.log("server error!!");
-          //   setRequesting(false);
-        });
-    } else {
-      alert("password and confirm password should be same");
-      //   setRequesting(false);
-    }
-    // setRequesting(false);
-  }
+        if (formData.pass1 === formData.pass2) {
+            let data = {
+                username: formData.name,
+                email: formData.email,
+                password: formData.pass1,
+            }
+          axios
+            .post(`${BACKEND_URL}register/`, data, {
+              headers: {
+                "Content-Type": "application/json",
+              },
+            })
+            .then((response) => {
+              if (response.status === 201) {
+                console.log("Successfull registration");
+                navigate("/");
+                toast.success('Registered successfully, You can Log In now', {
+                  position: "top-center",
+                  autoClose: 3000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined,
+                  theme: "light",
+                  });
+              } else if (response.status === 406) {
+                console.log(response.data.msg);
+              } else if (response.status === 226) {
+                console.log(response.data.msg)
+              }
+            //   setRequesting(false);
+            })
+            .catch((error) => {
+              console.log("server error!!");
+              toast.error('Something Went Wrong', {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                });
+            //   setRequesting(false);
+            });
+        } else {
+          alert("password and confirm password should be same");
+        //   setRequesting(false);
+        toast.error('Password and Confirm Password does not match', {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
+        }
+        // setRequesting(false);
+      }
 
   return (
     <>

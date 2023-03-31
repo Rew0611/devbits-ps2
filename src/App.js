@@ -13,6 +13,7 @@ import GoogleMiddleware from './components/GoogleLogin/GoogleMiddleware';
 import { AuthProvider } from "./context/AuthContext";
 import Know from "./components/knowstock/know";
 import News from "./components/News/News";
+import { ToastContainer, toast } from "react-toastify";
 
 const useStyles = makeStyles(() => ({
   App: {
@@ -28,6 +29,7 @@ function App() {
 
   return (
       <div className={classes.App}>
+        <ToastContainer/>
         <Header />
           <Routes>
             <Route path="/" element={<Main/>}/>

@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import AuthContext from '../../context/AuthContext';
 import { useSearchParams } from 'react-router-dom';
 import axios from 'axios';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function GoogleMiddleware() {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -28,9 +30,29 @@ function GoogleMiddleware() {
                     localStorage.setItem('authTokens', JSON.stringify(res.data))
                     setAuthTokens(res.data);
                     navigate("/");
+                    toast.success('Logged in successfully!', {
+                        position: "top-center",
+                        autoClose: 3000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                        });
                 }
                 else{
                     navigate("/signup", {state:{username: res.data.data.name, email: res.data.data.email}});
+                    toast.error('You are not registered! first register', {
+                        position: "top-center",
+                        autoClose: 3000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                        });
                 }
                 // setAuthTokens(res.data)
                 
@@ -38,6 +60,16 @@ function GoogleMiddleware() {
                 // navigate("/")
             }).catch((e)=>{
                 console.log(e);
+                toast.error('Something Went Wrong', {
+                    position: "top-center",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    });
                 // if (e.stat)
             })
         }
@@ -45,6 +77,16 @@ function GoogleMiddleware() {
             // console.log("catch error")
             console.error(error)
             navigate("/");
+            toast.error('Something Went Wrong', {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                });
         }
     
     }

@@ -1,9 +1,9 @@
 .dashboard-main{
-    height: 90vh;
+    height: 100vh;
     flex-grow: unset;
 }
 .profile-outer{
-    width: 20vw;
+    /* width: 20vw; */
     border-radius: 10%;
     background-color: #000000;
     box-shadow: 21px 0 124px -26px #162859;
@@ -54,4 +54,37 @@
 }
 .watchlist-card{
     box-shadow: 21px 0 124px -26px #162859;
+}
+
+.mobile{
+    display: none;
+}
+
+@media screen and (max-width: 900px) {
+    .mobile{
+        display: flex;
+    }
+    .dashboard-main{
+        display: none
+    }
+    .watchlist-card-main{
+        height: 10vh;
+        width: 20vh;
+    }
+    .watchlist-card-main img{
+        height: 40px;
+        width: 40px;
+    }
+    .watchlist-title{
+        width: auto;
+        font-size: 15px;
+    }
+    .watchlist-desc{
+        width: auto;
+        font-size: 10px;;
+    }
+    .stock-card-main{
+        margin: 0;;
+        padding: 10px;
+    }
 }
