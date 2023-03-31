@@ -1,7 +1,7 @@
 export const chartDays = [
   {
     label: "Price",
-    value: 'data.prices',
+    value: 'prices',
   },
   {
     label: "Market Capital",
