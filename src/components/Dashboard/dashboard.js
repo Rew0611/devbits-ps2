@@ -7,6 +7,7 @@ import {useNavigate} from "react-router-dom"
 import {useEffect, useContext, useState} from "react";
 import axios from "axios";
 import AuthContext from "../../context/AuthContext";
+import avatar from "./avatar.png";
 // import Graph from "../Graph/graph";
 
 const Dashboard = () => {
@@ -62,7 +63,7 @@ const Dashboard = () => {
                 <div className="watchlist flex flex-col overflow-auto p-6">
                     <div className="my-stocks-heading text-2xl text-white m-5">MY WATCHLIST</div>
                     {watchlist.map((data) => {
-                        return <WatchlistCard title={data.code_name} desc={data.full_name} />
+                        return <WatchlistCard title={data.code_name} desc={data.full_name} image={data.image} />
                     })}
                 </div>
                 {/* <Graph/> */}
@@ -88,7 +89,7 @@ const Dashboard = () => {
                 <div class="profile-outer my-4 mx-3 bg-[#20354b] rounded-2xl px-8 py-6 shadow-lg">
                     
                     <div class="mt-6 w-fit mx-auto">
-                        <img src="https://api.lorem.space/image/face?w=120&h=120&hash=bart89fe" class="rounded-full w-28 " alt="profile picture" srcset="" />
+                        <img src={avatar} class="rounded-full w-28 " alt="profile picture" srcset="" />
                     </div>
 
                     <div class="mt-8 ">
@@ -96,14 +97,14 @@ const Dashboard = () => {
                     </div>
                     
                     <div className="my-5">
-                        <div class="mt-3 text-white text-2xl">
+                        <div class="mt-3 text-white text-3xl">
                             <span class="text-gray-400 font-semibold">BALANCE:</span>
                             <span className="ml-4">{(userInfo!=null) && userInfo.curamount}</span>
                         </div>
-                        <div class="mt-3 text-white text-2xl">
+                        {/* <div class="mt-3 text-white text-2xl">
                             <span class="text-gray-400 font-semibold">INVESTED:</span>
                             <span className="ml-4">15000</span>
-                        </div>
+                        </div> */}
                         <div class="mt-3 text-white text-2xl">
                             <span class="text-gray-400 font-semibold">GAIN:</span>
                             <span className="ml-4">{(userInfo!=null) && userInfo.gain}</span>
@@ -131,7 +132,7 @@ const Dashboard = () => {
                         
                         <div className="flex items-center mb-4">
                             <div class="flex">
-                                <img src="https://api.lorem.space/image/face?w=120&h=120&hash=bart89fe" class="rounded-full w-[100%] " alt="profile picture" srcset="" />
+                                <img src={avatar} class="rounded-full w-[40%] " alt="profile picture" srcset="" />
                             </div>
 
                             <div class="flex ml-3">
@@ -139,15 +140,15 @@ const Dashboard = () => {
                             </div>
                         </div>
                         <div className="flex justify-between">
-                            <div className="flex flex-col">
-                                <div class="mt-1 text-white text-lg">
+                            <div className="flex flex-col justify-between">
+                                <div class="mt-1 text-white text-xl">
                                     <span class="text-gray-400 font-semibold">BALANCE:</span>
                                     <span className="ml-2">{(userInfo!=null) && userInfo.curamount}</span>
                                 </div>
-                                <div class="mt-1 text-white text-lg">
+                                {/* <div class="mt-1 text-white text-lg">
                                     <span class="text-gray-400 font-semibold">INVESTED:</span>
                                     <span className="ml-2">15000</span>
-                                </div>
+                                </div> */}
                                 <div class="mt-1 text-white text-lg">
                                     <span class="text-gray-400 font-semibold">GAIN:</span>
                                     <span className="ml-2">{(userInfo!=null) && userInfo.gain}</span>
@@ -177,7 +178,7 @@ const Dashboard = () => {
                         <div className="text-2xl text-white m-5">MY WATCHLIST</div>
                         <div className="flex flex-wrap justify-between h-[25vh] overflow-y-auto">
                             {watchlist.map((data) => {
-                                return <WatchlistCard title={data.code_name} desc={data.full_name} />
+                                return <WatchlistCard title={data.code_name} desc={data.full_name} image={data.image} />
                             })}
                         </div>                        
                     </div>

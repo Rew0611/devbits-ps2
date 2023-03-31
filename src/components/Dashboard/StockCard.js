@@ -11,6 +11,7 @@ const StockCard = (props) => {
     const [selling, setSelling] = useState(false);
     const [sellData, setSellData] = useState(0);
     const [price, setPrice] = useState(0);
+    const [image, setImage] = useState("");
     const [loss, setLoss] = useState(((props.avgprice-price)/props.avgprice)*100);
     const [gain, setGain] = useState(((price-props.avgprice)/props.avgprice)*100);
     let {authTokens} = useContext(AuthContext);
@@ -21,7 +22,9 @@ const StockCard = (props) => {
         axios.get(SingleCoin(props.id)).then((res)=>{
             console.log(res.data)
             let p = res.data.market_data.current_price.inr
+            let i = res.data.image.large;
             setPrice(p);
+            setImage(i);
             setGain(((p-props.avgprice)/props.avgprice)*100);
             setLoss(((props.avgprice-p)/props.avgprice)*100);
         }).catch((err)=>{
@@ -78,7 +81,7 @@ const StockCard = (props) => {
                 <div
                     class="flex flex-col block rounded-3xl shadow-lg ">
                     <div className="flex">
-                        <img src={defImg} />
+                        <img src={image} />
                         <div className="flex flex-col justify-center ml-5">
                             <h5 class="mb text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
                                 {props.sym}

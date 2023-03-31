@@ -286,12 +286,16 @@ export default function CoinsTable() {
                             gap: 15,
                           }}
                         >
-                          {/* <img
-                            src={row?.image}
-                            alt={row.name}
-                            height="50"
-                            style={{ marginBottom: 10 }}
-                          /> */}
+                        {/* <div > */}
+                          <img
+                              src={row?.image}
+                              alt={row.name}
+                              className="h-[3.5rem]"
+                              // height="10px"
+                              style={{ marginBottom: 10 }}
+                            />
+                        {/* </div> */}
+                          
                           <div
                             style={{ display: "flex", flexDirection: "column" }}
                           >

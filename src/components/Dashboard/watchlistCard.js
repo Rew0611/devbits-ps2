@@ -48,10 +48,10 @@ const WatchlistCard = (props) => {
 
     return (
         <>
-            <div class="watchlist-card-main flex justify-center h-15 mx-2 my-2">
+            <div class="watchlist-card-main flex  h-15 mx-2 my-2">
                 <div
-                    class="flex justify-center items-center align-middle watchlist-card block rounded-3xl p-1 shadow-lg ">
-                    <img src={defImg} />
+                    class="flex justify-between items-center w-[100%] watchlist-card block rounded-3xl p-1 shadow-lg ">
+                    <img src={props.image} />
                     <div className="flex flex-col justify-center mx-2">
                         <div class="watchlist-title flex font-medium leading-tight text-neutral-800 dark:text-neutral-50">
                             {props.title}

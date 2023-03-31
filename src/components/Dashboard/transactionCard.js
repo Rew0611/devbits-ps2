@@ -1,8 +1,26 @@
 import "./dashboard.css"
 import defImg from "../News/default.png";
 import {BsArrowDownLeftCircle, BsArrowUpRightCircle} from "react-icons/bs"
+import { useState, useEffect } from "react";
+import axios from "axios"
+import { SingleCoin } from "../../config/api";
 
 const TransactionCard = (props) => {
+    const [image, setImage] = useState("");
+
+    useEffect(()=>{
+        axios.get(SingleCoin(props.id)).then((res)=>{
+            console.log(res.data)
+            // let p = res.data.market_data.current_price.inr
+            let i = res.data.image.large;
+            // setPrice(p);
+            setImage(i);
+            // setGain(((p-props.avgprice)/props.avgprice)*100);
+            // setLoss(((props.avgprice-p)/props.avgprice)*100);
+        }).catch((err)=>{
+            console.log(err);
+        })
+    }, [])
 
     // const date = props.date.toString().slice(0,10);
     // const time = props.date.toString().slice(11, 19)
@@ -16,7 +34,7 @@ const TransactionCard = (props) => {
                 <div
                     class="transaction-card px-6 py-2 block rounded-3xl w-100 shadow-lg relative">
                     <div className="flex">
-                        <img src={defImg} />
+                        <img src={image || defImg} />
                         <div className="flex flex-col justify-center ml-5">
                             <h5 class="mb text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
                                 {props.sym}
