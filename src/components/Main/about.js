@@ -1,6 +1,8 @@
 import React from "react";
+import { useNavigate } from "react-router";
 
 export default function About() {
+    const navigate=useNavigate();
   return (
           <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
             <div className="max-w-xl mb-10 pb-10 md:mx-auto text-center lg:max-w-2xl md:mb-12">
@@ -33,16 +35,15 @@ export default function About() {
                       height="24"
                     />
                   </svg>
-                  <span className="relative">The</span>
+                  <span className="relative">In</span>
                 </span>{' '}
-                quick, brown fox jumps over a lazy dog
+                investing, what is comfortable is rarely profiatble.
               </h2>
-              <p className="text-base text-gray-700 md:text-lg">
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                accusantium doloremque rem aperiam, eaque ipsa quae.
+              <p className="text-base text-gray-400 md:text-lg">
+                That's why we at Levi are here to help you in your crypto journey to become rich easier.
               </p>
             </div>
-            <div className="grid gap-8 row-gap-10 lg:grid-cols-2">
+            <div className="grid gap-12 gap-x-24 lg:grid-cols-2">
               <div className="max-w-md pb-8 sm:mx-auto text-center">
                 <div className="flex items-center justify-center w-16 h-16 mb-4 rounded-full mx-auto sm:w-24 sm:h-24" style={{boxShadow:'0 0 80px #324f9f'}}>
                   <svg
@@ -59,16 +60,15 @@ export default function About() {
                     />
                   </svg>
                 </div>
-                <h6 className="mb-5 text-xl text-orange-400 font-bold leading-5">The deep ocean</h6>
-                <p className="mb-3 text-sm text-gray-500">
-                  A flower in my garden, a mystery in my panties. Heart attack never
-                  stopped old Big Bear. I didn't even know we were calling him Big
-                  Bear. We never had the chance to.
+                <h6 className="mb-5 text-xl text-orange-400 font-bold leading-5">Trade</h6>
+                <p className="mb-3 text-lg text-gray-500">
+                Easily buy and sell the top ranking cryptos in the world and grow fast.
                 </p>
                 <a
-                  href="/"
+                  href="#"
                   aria-label=""
                   className="inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800"
+                  onClick={() => navigate(`/stock`)}
                 >
                   Learn more
                 </a>
@@ -89,17 +89,17 @@ export default function About() {
                     />
                   </svg>
                 </div>
-                <h6 className="mb-3 text-xl font-bold text-orange-400 leading-5">When has justice</h6>
-                <p className="mb-3 text-sm text-gray-500">
-                  Rough pomfret lemon shark plownose chimaera southern sandfish
-                  kokanee northern sea robin Antarctic cod. Yellow-and-black triplefin
-                  gulper South American Lungfish mahi-mahi, butterflyfish glass
-                  catfish soapfish ling gray mullet!
+                <h6 className="mb-3 text-xl font-bold text-orange-400 leading-5">Dashboard</h6>
+                <p className="mb-3 text-lg text-gray-500">
+                Easily keep track of all your earnings using the dashboard section. 
+                Using real-time data, you will always know what your money holds.
+                
                 </p>
                 <a
-                  href="/"
+                  href="#"
                   aria-label=""
                   className="inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800"
+                  onClick={() => navigate(`/dashboard`)}
                 >
                   Learn more
                 </a>
@@ -120,17 +120,16 @@ export default function About() {
                     />
                   </svg>
                 </div>
-                <h6 className="mb-3 text-xl font-bold leading-5 text-orange-400">Organically grow</h6>
-                <p className="mb-3 text-sm text-gray-500">
-                  A slice of heaven. O for awesome, this chocka full cuzzie is as
-                  rip-off as a cracker. Meanwhile, in behind the bicycle shed,
-                  Hercules Morse, as big as a horse and Mrs Falani were up to no good
-                  with a bunch of crook pikelets.
+                <h6 className="mb-3 text-xl font-bold leading-5 text-orange-400">News</h6>
+                <p className="mb-3 text-lg text-gray-500">
+                Stay updated with what is happening in the world of finance.
+                Be sure on the changing policies so that you can stay ahead of the race.
                 </p>
                 <a
-                  href="/"
+                  href="#"
                   aria-label=""
                   className="inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800"
+                  onClick={() => navigate(`/news`)}
                 >
                   Learn more
                 </a>
@@ -152,18 +151,17 @@ export default function About() {
                   </svg>
                 </div>
                 <h6 className="mb-3 text-xl font-bold leading-5 text-orange-400">
-                  A slice of heaven
+                  Watchlist
                 </h6>
-                <p className="mb-3 text-sm text-gray-500">
-                  Disrupt inspire and think tank, social entrepreneur but preliminary
-                  thinking think tank compelling. Inspiring, invest synergy capacity
-                  building, white paper; silo, unprecedented challenge B-corp
-                  problem-solvers.
+                <p className="mb-3 text-lg text-gray-500">
+                With real-time market data and customisable charts, 
+                you can easily track the price movements of your favourite cryptocurrencies and make trades occordingly.
                 </p>
                 <a
-                  href="/"
+                  href="#"
                   aria-label=""
                   className="inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800"
+                  onClick={() => navigate(`/know`)}
                 >
                   Learn more
                 </a>

@@ -5,11 +5,17 @@ import { useContext } from "react";
 import AuthContext from "../../context/AuthContext";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Navigate, useNavigate } from "react-router";
+import { useState } from "react";
+import { useEffect } from "react";
+import { numberWithCommas } from "../CoinsTable";
+// import { Console } from "console";
+// import { Navigate } from "react-router";
 
 const WatchlistCard = (props) => {
     let {authTokens} = useContext(AuthContext);
     const BACKEND_URL = process.env.REACT_APP_BASE_BACKEND_URL;
-
+  const navigate=useNavigate()
     const remove = ()=>{
         axios.post(`${BACKEND_URL}remove-watchlist/`,{
             code: props.title
@@ -45,19 +51,23 @@ const WatchlistCard = (props) => {
                 });
         })
     }
-
     return (
-        <>
-            <div class="watchlist-card-main flex  h-15 mx-2 my-2">
+        <>   
+            <div class="watchlist-card-main flex  h-15 mx-2 my-2" onClick={() =>{navigate(`/coins/${props.desc.toLowerCase()}`)}}>
                 <div
                     class="flex justify-between items-center w-[100%] watchlist-card block rounded-3xl p-1 shadow-lg ">
                     <img src={props.image} />
                     <div className="flex flex-col justify-center mx-2">
-                        <div class="watchlist-title flex font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+                        <div class="watchlist-title flex font-medium leading-tight text-neutral-800 dark:text-neutral-50" style={{
+                color: "#fff2b5",
+                backgroundImage: "linear-gradient(#fff 42%,#b7b7b7 73%)",
+                webkitBackgroundClip: "text",
+                webkitTextFillColor: "transparent",
+              }}>
                             {props.title}
                         </div>
                         {/* <br/> */}
-                        <div className="watchlist-desc">
+                        <div className="watchlist-desc text-orange-400">
                             {props.desc}
                         </div>
                     </div>

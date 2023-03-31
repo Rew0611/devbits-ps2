@@ -62,6 +62,7 @@ const useStyles = makeStyles((theme) => ({
   dontx: {
     position: "fixed",
     zIndex: "1000",
+    minWidth: "100%",
   },
 }));
 
@@ -170,7 +171,7 @@ function Header() {
                   variant="h8"
                   className={classes.tpr}
                 >
-                  Stocks
+                  Trade
                 </Typography>
                 <Typography
                   onClick={() => navigate(`/dashboard`)}
@@ -191,7 +192,7 @@ function Header() {
                   variant="h8"
                   className={classes.tpr}
                 >
-                  Know
+                  Info
                 </Typography>
                 <Typography
                   // onClick={() => navigate(`/news`)}
@@ -278,7 +279,7 @@ function Header() {
             >
               <li>
                 <a className="hotx">
-                  <Link to="/stock">Stocks</Link>
+                  <Link to="/stock">Trade</Link>
                 </a>
               </li>
               <li tabIndex={0}>
@@ -293,7 +294,7 @@ function Header() {
               </li>
               <li tabIndex={0}>
                 <a className="hotx justify-between">
-                  <Link to="/signup">Sign up</Link>
+                  <Link to="/know">Info</Link>
                 </a>
               </li>
             </ul>
@@ -306,7 +307,7 @@ function Header() {
           <ul className="menu menu-horizontal px-1">
             <li>
               <Link to="/stock"></Link>
-              <a>Stocks</a>
+              <a>Trade</a>
             </li>
             <li tabIndex={0}>
               <Link to="/news"></Link>

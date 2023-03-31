@@ -59,17 +59,25 @@ const CoinPage = () => {
       borderRight: "2px solid grey",
     },
     heading: {
-      fontWeight: "bold",
+      fontWeight: "300",
       marginBottom: 20,
       fontFamily: "Montserrat",
+    },
+    heading1: {
+      fontWeight: "400",
+      marginBottom: 20,
+      fontFamily: "Montserrat",
+      color:"#4C1D95"
     },
     description: {
       width: "100%",
       fontFamily: "Montserrat",
       padding: 25,
+      fontWeight:'300',
       paddingBottom: 15,
       paddingTop: 0,
       textAlign: "justify",
+      color:"white",
     },
     marketData: {
       alignSelf: "start",
@@ -103,10 +111,10 @@ const CoinPage = () => {
           height="200"
           style={{ marginBottom: 20 }}
         />
-        <Typography variant="h3" className={classes.heading}>
+        <Typography variant="h3" className={classes.heading1}>
           {coin?.name}
         </Typography>
-        <Typography variant="subtitle1" className={classes.description}>
+        <Typography variant="subtitle3" className={classes.description}>
           {ReactHtmlParser(coin?.description.en.split(". ")[0])}.
         </Typography>
         <div className={classes.marketData}>
@@ -120,6 +128,7 @@ const CoinPage = () => {
               style={{
                 fontFamily: "Montserrat",
               }}
+              className='text-red-600'
             >
               {numberWithCommas(coin?.market_cap_rank)}
             </Typography>
@@ -132,8 +141,10 @@ const CoinPage = () => {
             &nbsp; &nbsp;
             <Typography
               variant="h5"
+              className="text-teal-900"
               style={{
                 fontFamily: "Montserrat",
+                fontWeight:'500'
               }}
             >
               {symbol}{" "}

@@ -11,6 +11,7 @@ import Carousel from "../Banner/Carousel";
 import Footer from "../Footer/footer";
 import Fina from "./fina";
 import About from "./about";
+import ScrollReveal from 'scrollreveal'
 
 const Main = () => {
   let { userInfo, logoutUser } = useContext(AuthContext);
@@ -106,7 +107,7 @@ const Main = () => {
                     </video>
                     </div> 
                 </div>
-        <About></About>
+        <About className='abouty'></About>
         <div class="flex felx-col items-center justify-center mt-10">
           {" "}
           <span class="rounded-full bg-green-500 px-2 py-1 text-white uppercase text-sm">
