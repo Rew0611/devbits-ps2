@@ -39,13 +39,16 @@ export default function CoinsTable() {
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
   const [open, setOpen] = useState(null);
+  const [watchlist, setWatchlist] = useState([]);
   let { userInfo, authTokens } = useContext(AuthContext);
 
   const navigate = useNavigate();
-  let watchlist = {};
+  // let watchlist = {};
   // const { currency, symbol } = CryptoState();
   const currency = "INR";
   const symbol = "₹";
+
+  const BACKEND_URL = process.env.REACT_APP_BASE_BACKEND_URL;
 
   const matches = useMediaQuery("(min-width:800px)");
 
@@ -81,35 +84,6 @@ export default function CoinsTable() {
     setLoading(true);
     const { data } = await axios.get(CoinList(currency));
     console.log(data);
-    data.map((item) => {
-      watchlist[item.symbol.toUpperCase()] = 0;
-    });
-    // console.log(userInfo.watchlist)
-    // userInfo.watchlist.map((id) => {
-    //   console.log(id);
-    //   axios.get("http://localhost:8000/get-stock/",{
-    //     id: id
-    //   },{
-    //     headers:{
-    //       'Authorization': `Bearer ${authTokens.access}`
-    //     }
-    //   }).then((res)=>{
-    //     console.log(res);
-    //   }).catch((err)=>{
-    //     console.log(err);
-    //   })
-    // })
-    // data.map((item) => {
-    //   axios.post("http://localhost:8000/add-stock/",{
-    //     full_name: item.name,
-    //     code_name: item.symbol.toUpperCase(),
-    //     image: item.image
-    //   },{
-    //     headers: {
-    //       'Authorization': `Bearer ${authTokens.access_token}`
-    //     }
-    //   })
-    // })
     setCoins(data);
     setLoading(false);
   };
@@ -141,9 +115,12 @@ export default function CoinsTable() {
   // }
 
   const addToWatchlist = (code) => {
+    console.log(code);
+    console.log(watchlist[code]);
+    console.log(authTokens);
     axios
       .post(
-        "http://localhost:8000/add-watchlist/",
+        `${BACKEND_URL}add-watchlist/`,
         {
           code: code,
         },
@@ -155,20 +132,22 @@ export default function CoinsTable() {
       )
       .then((res) => {
         console.log(res);
-        watchlist[code] = 1;
+        console.log("stock added to watchlist");
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
-  const buyCoins = (e, stockname, price) => {
-    console.log(authTokens.access_token);
+  const buyCoins = (e, id, symbol, stockname, price) => {
+    console.log(authTokens.access);
     e.preventDefault();
     axios
       .post(
-        "http://localhost:8000/buy-stock/",
+        `${BACKEND_URL}buy-stock/`,
         {
+          id: id,
+          symbol: symbol,
           stockname: stockname,
           quantity: buyCoinsData,
           price: price,
@@ -185,8 +164,13 @@ export default function CoinsTable() {
         }
       )
       .then((res) => {
-        console.log("Coins Bought");
-        setBuySuccess(1);
+        if (res.data["msg"] == "Insufficient Balance") {
+          console.log("Insufficient Balance");
+        } else {
+          console.log(res);
+          console.log("Coins Bought");
+          setBuySuccess(1);
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -230,7 +214,7 @@ export default function CoinsTable() {
                 <Table aria-label="simple table">
                   <TableHead className="tabx">
                     <TableRow>
-                      {["Coin", "Price", "24h Change", "Market Cap", ""].map(
+                      {["Coin", "Price", "24h Change", "Market Cap"].map(
                         (head) => (
                           <TableCell
                             style={{
@@ -320,17 +304,9 @@ export default function CoinsTable() {
                                 )}
                                 M
                               </TableCell>
-                              <TableCell align="right">
-                                <button
-                                  className="text-xl"
-                                  // onClick={()=>addToWatchlist(row.symbol.toUpperCase())}
-                                >
-                                  <span className="star">&#9733;</span>
-                                </button>
-                              </TableCell>
                             </TableRow>
                             {open === row.id && (
-                              <TableRow padding={0} className="bg-black hox">
+                              <TableRow padding={0} style={{background:"#152238"}}>
                                 {/* <div className="flex items-center content-between"> */}
                                 <TableCell colSpan={2}>
                                   <CoinInfox coin={row} />
@@ -342,7 +318,13 @@ export default function CoinsTable() {
                                 <TableCell colSpan={2}>
                                   <form
                                     onSubmit={(e) =>
-                                      buyCoins(e, row.name, row.current_price)
+                                      buyCoins(
+                                        e,
+                                        row.id,
+                                        row.symbol,
+                                        row.name,
+                                        row.current_price
+                                      )
                                     }
                                   >
                                     <div class="mb-6">
@@ -362,7 +344,7 @@ export default function CoinsTable() {
                                     </div>
                                     <button
                                       type="submit"
-                                      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                      class="text-white mb-4 bg-black hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                     >
                                       Submit
                                     </button>
@@ -372,6 +354,14 @@ export default function CoinsTable() {
                                       Coins Bought Successfully
                                     </div>
                                   )}
+                                  <button
+                                    onClick={() =>
+                                      addToWatchlist(row.symbol.toUpperCase())
+                                    }
+                                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                  >
+                                    Add to watchlist
+                                  </button>
                                 </TableCell>
                                 {/* </div> */}
                                 {/* <TableCell>

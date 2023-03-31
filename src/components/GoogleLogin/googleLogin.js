@@ -7,8 +7,8 @@ function LoginWithGoogle() {
 //   const { REACT_APP_GOOGLE_CLIENT_ID, REACT_APP_BASE_FRONTEND_URL } =
 //     process.env;
        const CLIENT_ID = '190354675761-cbf4e3u9e2dji5np5jhen66mfjfis509.apps.googleusercontent.com';
-       const FRONTEND_URL = 'http://localhost:3001'
-       const BACKEND_URL = 'http://localhost:8000'
+       const FRONTEND_URL = 'http://localhost:3000'
+       const BACKEND_URL = process.env.REACT_APP_BASE_BACKEND_URL
   const openGoogleLoginPage = useCallback(() => {
     const googleAuthUrl = "https://accounts.google.com/o/oauth2/v2/auth";
     const redirectUri = "api/google/callback/";

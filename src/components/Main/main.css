@@ -16,10 +16,10 @@
 
 
 .aboutus-image{
-    background-image: url('./aboutus.png');
+    /* background-image: url('./aboutus.png');
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: center; */
 }
 @media only screen and (max-width: 2950px) {
     .s1{

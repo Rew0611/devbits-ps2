@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 // import { makeStyles } from "@material-ui/core/styles";
 // import Pagination from "@material-ui/lab/Pagination";
 import "./know.css";
+import TradingViewWidget from "./widget";
 import { Link } from "react-router-dom";
 // import { StyleRoot } from "radium";
 // import Radium from "radium";
@@ -12,7 +13,6 @@ import { CoinList } from "../../config/api";
 import { SingleCoin } from "../../config/api";
 import { useNavigate } from "react-router-dom";
 // import AuthContext from "../context/AuthContext";
-
 export default function Know() {
   const [buysuccess, setBuySuccess] = useState(0);
   const [buyCoinsData, setBuyCoinsData] = useState(0);
@@ -41,8 +41,11 @@ export default function Know() {
     }
   }, [currency]);
 
+  
+
   return (
     <div>
+      {/* <TradingViewWidget> */}
       <div class="grid ml-4 pb-8 mr-4 grid-cols-1 gap-8 domxx xl:mt-16  xl:grid-cols-4">
         {coins.map((data) => {
           const profit = data.price_change_percentage_24h > 0;

@@ -35,7 +35,7 @@
     background-color: #000000;
     box-shadow: 21px 0 124px -26px #162859;
 }
-.stock-card-main img{
+.stock-card-main img, .watchlist-card img{
     height:50px;
     width:50px;
     border-radius: 50%;
@@ -49,7 +49,7 @@
     background-color: #000000;
 }
 .transaction-card{
-    width: 80vw;
+    /* width: 80vw; */
     box-shadow: 21px 0 124px -26px #162859;
 }
 .watchlist-card{

@@ -1,6 +1,7 @@
 import React from "react";
 import "./fina.css";
-
+import { AiOutlineStock } from "react-icons/ai";
+import {RiStockLine} from "react-icons/ri"
 export default function Fina() {
   return (
     <div>
@@ -8,21 +9,26 @@ export default function Fina() {
         <div className="col-lg-4 align-self-center" data-v-2eda1f63>
           <div className="feature-container" data-v-2eda1f63>
             <div className="text-center" data-v-2eda1f63>
-              <div className="f-image" data-v-2eda1f63>
-                <i className="fas fa-bolt" data-v-2eda1f63 />
+              <div className="f-image flex justify-center items-center" data-v-2eda1f63>
+                <AiOutlineStock
+                  style={{
+                    fontSize: "110px",
+                    boxShadow: "0 0 80px #324f9f",
+                    color: "white",
+                  }}
+                ></AiOutlineStock>
               </div>{" "}
               <br data-v-2eda1f63 /> <br data-v-2eda1f63 />{" "}
-              <h1 className="metal text-5xl" data-v-2eda1f63>
-                No Sleep
+              <h1 className="metal text-4xl" data-v-2eda1f63>
+                Stock
               </h1>{" "}
               <br data-v-2eda1f63 /> <br data-v-2eda1f63 />
             </div>{" "}
             <p className="text-center text-lg" data-v-2eda1f63>
-              Cyclic Apps are{" "}
-              <strong data-v-2eda1f63>available immediately</strong> and on
-              demand.
+              Stocks are <strong data-v-2eda1f63>type of secuirty </strong> that
+              gives shares of ownership
               <br data-v-2eda1f63 /> <br data-v-2eda1f63 />
-              Say goodbye to waiting 30 seconds for containers to be spun up.
+              If you do choose to invest in a share, invest for the lifetime.
               <br data-v-2eda1f63 /> <br data-v-2eda1f63 />{" "}
               <em data-v-2eda1f63>Even on free tier.</em> <br data-v-2eda1f63 />{" "}
               <br data-v-2eda1f63 />
@@ -32,16 +38,16 @@ export default function Fina() {
         <div className="col-lg-4 align-self-center" data-v-2eda1f63>
           <div className="feature-containerx" data-v-2eda1f63>
             <div className="text-center" data-v-2eda1f63>
-              <h1 className="metal text-5xl" data-v-2eda1f63>
-                Worldwide
+              <h1 className="metal text-4xl" data-v-2eda1f63>
+                Digital Coin
               </h1>{" "}
               <br data-v-2eda1f63 /> <br data-v-2eda1f63 />
             </div>{" "}
             <p className="text-center text-lg" data-v-2eda1f63>
-              Code is deployed to where you are.
+              Based on <strong data-v-2eda1f63> Blockchain </strong>
               <br data-v-2eda1f63 /> <br data-v-2eda1f63 />{" "}
-              <strong data-v-2eda1f63>Smart caching</strong> helps you deliver
-              the best performance globally.
+              <strong data-v-2eda1f63>Coins </strong>are alternative form of
+              payment created using encryption algorithms
               <br data-v-2eda1f63 /> <br data-v-2eda1f63 />{" "}
               <br data-v-2eda1f63 /> <br data-v-2eda1f63 />{" "}
               <br data-v-2eda1f63 /> <br data-v-2eda1f63 />{" "}
@@ -53,20 +59,27 @@ export default function Fina() {
         <div className="col-lg-4 align-self-center" data-v-2eda1f63>
           <div className="feature-container" data-v-2eda1f63>
             <div className="text-center" data-v-2eda1f63>
-              <div className="f-image" data-v-2eda1f63>
-                <i className="fas fa-rocket" data-v-2eda1f63 />
+              <div className="f-image flex justify-center items-center" data-v-2eda1f63>
+                <RiStockLine  style={{
+                    fontSize: "110px",
+                    boxShadow: "0 0 80px #324f9f",
+                    color: "white",
+                  }}></RiStockLine>
               </div>{" "}
               <br data-v-2eda1f63 /> <br data-v-2eda1f63 />{" "}
-              <h1 className="metal text-5xl" data-v-2eda1f63>
-                Hyper-Scale
+              <h1 className="metal text-4xl" data-v-2eda1f63>
+                Mutual Fund
               </h1>{" "}
               <br data-v-2eda1f63 /> <br data-v-2eda1f63 />
             </div>{" "}
             <p className="text-center text-lg" data-v-2eda1f63>
-              Scale up and down <strong data-v-2eda1f63>instantly</strong>.
-              <br data-v-2eda1f63 /> <br data-v-2eda1f63 />
-              1GB serverless compute handles{" "}
-              <strong data-v-2eda1f63>EACH individual request</strong>.
+              Pool of money <strong data-v-2eda1f63>in Secuirties</strong>
+              <br data-v-2eda1f63 /> <br data-v-2eda1f63 />A company which
+              handles{" "}
+              <strong data-v-2eda1f63>
+                money in securities such as stocks
+              </strong>
+              .
               <br data-v-2eda1f63 /> <br data-v-2eda1f63 />
             </p>
           </div>
