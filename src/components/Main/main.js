@@ -132,12 +132,8 @@ const Main = () => {
                 <Carousel/>
                 <Fina></Fina>
                 {/* <Contact/> */}
-<<<<<<< HEAD
                 <Footer/>
                 </div>
-=======
-            </div>
->>>>>>> ee1ba7e9a55deaa37290418c4cf0be4ed800daf6
             </>
         )
 }
