@@ -85,40 +85,27 @@ const Main = () => {
   return (
     <>
       <div className="main-outer flex flex-col" style={{ overflowX: "hidden" }}>
-        <div
-          className="rew pt-10 pb-20 main flex flex-shrink-0 h-[90vh] w-[100%] justify-evenly items-center"
-          ref={vantaRef}
-        >
-          {/* <img src={anime} height="200" width="700px"/> */}
-          <div className="main-heading text-white flex flex-col h-[50vh] mx-10">
-            <div className="s1 main-heading1 mb-5">Levi</div>
-            <div className="s2 main-heading2 my-3">
-              Join the best Crypto Exchange in the world
-            </div>
-            <div className="s3 main-heading3 mt-2">
-              Levi is the easiest place to buy and sell Cryptocurrency. <br />{" "}
-              Sign Up and get started today
-            </div>
-            {/* <div className="main-heading3 text-2xl"></div> */}
-          </div>
-          <div className="flex items-center justify-center hexd">
-            <video
-              loop
-              autoPlay
-              muted
-              playsinline
-              className="max-h-[70%] max-w-[70%]"
-            >
-              <source
-                type="video/mp4"
-                src="https://i.imgur.com/erslMug.mp4"
-                // src="https://i.imgur.com/p3ZslcL.mp4"
-                // src="https://i.imgur.com/Dv7Cood.mp4"
-                // src="https://i.imgur.com/FVEh1Jf.mp4"
-              ></source>
-            </video>
-          </div>
-        </div>
+      <div className="rew pt-10 pb-10 main flex  h-[100vh] w-[100%] justify-evenly items-center" ref={vantaRef}>
+                {/* <img src={anime} height="200" width="700px"/> */}
+                    <div className="main-heading text-white flex flex-col justify-center h-[50vh] ml-10">
+                        <div className="s1 main-heading1 text-8xl mb-5">Levi</div>
+                        <div className="s2 main-heading2 my-3 text-4xl">Join the best Crypto Exchange in the world</div>
+                        <div className="s3 main-heading3 mt-2 text-2xl">Levi is the easiest place to buy and sell Cryptocurrency. <br/> Sign Up and get started today</div>
+                        {/* <div className="main-heading3 text-2xl"></div> */}
+                        
+                    </div>
+                    <div className="video-outer flex items-center justify-center hexd w-[60vw]" > 
+                    <video loop autoPlay muted playsinline className="h-[70%] w-[70%]">
+                        <source
+                            type="video/mp4"
+                            src="https://i.imgur.com/erslMug.mp4"
+                            // src="https://i.imgur.com/p3ZslcL.mp4"
+                            // src="https://i.imgur.com/Dv7Cood.mp4"
+                            // src="https://i.imgur.com/FVEh1Jf.mp4"
+                        ></source>
+                    </video>
+                    </div> 
+                </div>
         <About></About>
         <div class="flex felx-col items-center justify-center mt-10">
           {" "}

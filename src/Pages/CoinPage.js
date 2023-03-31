@@ -152,6 +152,7 @@ const CoinPage = () => {
               style={{
                 fontFamily: "Montserrat",
               }}
+              className='text-teal-900'
             >
               {symbol}{" "}
               {numberWithCommas(

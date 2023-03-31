@@ -318,9 +318,24 @@ function Header() {
             </li>
           </ul>
         </div>
-        <div className="navbar-end">
+        {userInfo==null ? (
+              <>
+              <div className="navbar-end">
+                <a className="logix"><Link to='/login'>Login</Link> </a>
+              </div>
+              <div className="navbar-end">
+                <a className="logix"><Link to='/signup'>Signup</Link> </a>
+              </div>
+              </>
+            ) : (
+              <div className="navbar-end">
+                <a onClick={logoutUser} className="logix">Logout</a>
+              </div>
+            )}
+            
+        {/* <div className="navbar-end">
           <a className="logix"><Link to='/login'>Login</Link> </a>
-        </div>
+        </div> */}
       </div>
       </>
     );
