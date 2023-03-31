@@ -315,10 +315,11 @@ function Header() {
               <>
               <div className="navbar-end">
                 <a className="logix"><Link to='/login'>Login</Link> </a>
-              </div>
-              <div className="navbar-end">
                 <a className="logix"><Link to='/signup'>Signup</Link> </a>
               </div>
+              {/* <div className="navbar-end">
+                
+              </div> */}
               </>
             ) : (
               <div className="navbar-end">

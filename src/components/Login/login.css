@@ -7,7 +7,7 @@
     align-content: center;
     flex-wrap: wrap;
     width: 100vw;
-    height: 100vh;
+    height: 90vh;
 }
 .login-main form{
     background-color: black;
