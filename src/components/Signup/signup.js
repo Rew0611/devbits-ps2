@@ -98,68 +98,98 @@ const Signup = () => {
         // setRequesting(false);
       }
 
-  return (
-    <>
-      <form
-        onSubmit={handleSubmit}
-        className="flex flex-col pt-6 mt-20 space-y-5 mb-20 justify-center items-center px-10 w-[100%]"
-      >
-        <label className="block w-6/12 min-w-[15rem]">
-          <span className="white whitespace-nowrap">Email ID</span>
-          <input
-            type="email"
-            onChange={handleChange}
-            className="searchx text-black block w-full mt-3 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-            value={formData.email}
-            name="email"
-            placeholder=""
-            required={true}
-          />
-        </label>
-        <label className="block w-6/12 min-w-[15rem]">
-          <span className="white whitespace-nowrap">Full Name</span>
-          <input
-            type="text"
-            onChange={handleChange}
-            value={formData.name}
-            className="searchx text-black block w-full mt-3 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-            name="name"
-            placeholder=""
-            required={true}
-          />
-        </label>
-        <label className="block w-6/12 min-w-[15rem]">
-          <span className="white whitespace-nowrap">Password</span>
-          <input
-            type="password"
-            onChange={handleChange}
-            className="searchx text-black block w-full mt-3 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-            name="pass1"
-            placeholder=""
-            required={true}
-          />
-        </label>
-        <label className="block w-6/12 min-w-[15rem]">
-          <span className="white whitespace-nowrap">Confirm Password</span>
-          <input
-            type="password"
-            onChange={handleChange}
-            className="searchx text-black block w-full mt-3 mb-3 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-            name="pass2"
-            placeholder=""
-            required={true}
-          />
-        </label>
-        <button
-          id="register"
-          type="submit"
-          className="bg-[#456A9D] rounded-lg w-36 my-3.5 p-2 text-white font-semibold hover:scale-110 transition-all ease-in-out"
-        >
-          Register
-        </button>
-      </form>
-    </>
-  );
-};
+    return (
+        <>
+        <div className="flex overflow-hidden justify-center align-middle login-main">
+                <div className="flex items-center p-10 justify-center align-middle h-[70%] w-[80%] md:w-[40%] backdrop-blur-sm">
+            <form
+                onSubmit={handleSubmit}
+                className="flex flex-col pt-6 mt-20 space-y-5 mb-20 justify-center items-center px-10 w-[100%]"
+                >
+
+                <label className="block mt-2">
+                    <span className="white whitespace-nowrap">Email ID</span>
+                    <input
+                    type="email"
+                    onChange={handleChange}
+                    className="mt-1
+                              p-2
+                              block
+                              h-8
+                              w-full
+                              rounded-md
+                              shadow-sm"
+                    value={formData.email}
+                    name="email"
+                    placeholder=""
+                    required={true}
+                    />
+                </label>
+                <label className="block mt-2">
+                    <span className="white whitespace-nowrap">Full Name</span>
+                    <input
+                    type="text"
+                    onChange={handleChange}
+                    value={formData.name}
+                    className="mt-1
+                                p-2
+                                block
+                                h-8
+                                w-full
+                                rounded-md
+                                shadow-sm"
+                    name="name"
+                    placeholder=""
+                    required={true}
+                    />
+                </label>
+                <label className="block mt-2">
+                    <span className="white whitespace-nowrap">Password</span>
+                    <input
+                    type="password"
+                    onChange={handleChange}
+                    className="mt-1
+                              p-2
+                              block
+                              h-8
+                              w-full
+                              rounded-md
+                              shadow-sm"
+                    name="pass1"
+                    placeholder=""
+                    required={true}
+                    />
+                </label>
+                <label className="block mt-2">
+                    <span className="white whitespace-nowrap">Confirm Password</span>
+                    <input
+                    type="password"
+                    onChange={handleChange}
+                    className="mt-1
+                              p-2
+                              block
+                              h-8
+                              w-full
+                              rounded-md
+                              shadow-sm"
+                    name="pass2"
+                    placeholder=""
+                    required={true}
+                    />
+                </label>
+                <button
+                  id="register"
+                  type="submit"
+                  className="bg-[#456A9D] rounded-lg w-36 my-3.5 p-2 text-white font-semibold hover:scale-110 transition-all ease-in-out"
+                >
+                  Register
+                </button>
+            </form>
+            </div>
+            </div>
+        </>
+    )
+}
 
 export default Signup;
+

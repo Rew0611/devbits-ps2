@@ -53,7 +53,7 @@ const WatchlistCard = (props) => {
     }
     return (
         <>   
-            <div class="watchlist-card-main flex  h-15 mx-2 my-2" onClick={() =>{navigate(`/coins/${props.desc.toLowerCase()}`)}}>
+            <div class="watchlist-card-main flex  h-15 mx-2 my-2" onClick={() =>{navigate(`/coins/${props.id}`)}}>
                 <div
                     class="flex justify-between items-center w-[100%] watchlist-card block rounded-3xl p-1 shadow-lg ">
                     <img src={props.image} />

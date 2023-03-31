@@ -84,6 +84,7 @@ const Dashboard = () => {
           {watchlist.map((data) => {
             return (
               <WatchlistCard
+                id={data.id1}
                 title={data.code_name}
                 desc={data.full_name}
                 image={data.image}
