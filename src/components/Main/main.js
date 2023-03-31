@@ -8,6 +8,7 @@ import './main.css';
 import aboutusimg from "./aboutus.png";
 import Contact from "../Contact/contact";
 import Carousel from "../Banner/Carousel";
+import Footer from "../Footer/footer";
 import Fina from "./fina";
 
 const Main = () => {
@@ -131,7 +132,12 @@ const Main = () => {
                 <Carousel/>
                 <Fina></Fina>
                 {/* <Contact/> */}
+<<<<<<< HEAD
+                <Footer/>
+                </div>
+=======
             </div>
+>>>>>>> ee1ba7e9a55deaa37290418c4cf0be4ed800daf6
             </>
         )
 }
