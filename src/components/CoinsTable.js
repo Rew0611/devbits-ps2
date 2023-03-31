@@ -48,6 +48,8 @@ export default function CoinsTable() {
   const currency = "INR";
   const symbol = "₹";
 
+  const BACKEND_URL = process.env.REACT_APP_BASE_BACKEND_URL
+
   const matches = useMediaQuery('(min-width:800px)');
 
   const useStyles = makeStyles({
@@ -116,7 +118,7 @@ export default function CoinsTable() {
     console.log(code)
     console.log(watchlist[code])
     console.log(authTokens)
-    axios.post("http://localhost:8000/add-watchlist/",{
+    axios.post(`${BACKEND_URL}add-watchlist/`,{
         code: code
     },{
       headers: {
@@ -130,10 +132,12 @@ export default function CoinsTable() {
     })
   }
 
-  const buyCoins = (e, stockname, price) => {
+  const buyCoins = (e, id, symbol, stockname, price) => {
     console.log(authTokens.access)
     e.preventDefault()
-    axios.post("http://localhost:8000/buy-stock/",{
+    axios.post(`${BACKEND_URL}buy-stock/`,{
+      id: id,
+      symbol: symbol,
       stockname: stockname,
       quantity: buyCoinsData,
       price: price
@@ -147,8 +151,14 @@ export default function CoinsTable() {
       //   price: price
       // }
     }).then((res)=>{
-      console.log("Coins Bought");
-      setBuySuccess(1);
+      if (res.data["msg"]=="Insufficient Balance"){
+        console.log("Insufficient Balance");
+      }
+      else{
+        console.log(res)
+        console.log("Coins Bought");
+        setBuySuccess(1);
+      }
     }).catch((err)=>{
       console.log(err);
     })
@@ -280,7 +290,7 @@ export default function CoinsTable() {
                             {/* </TableCell> */}
                             
                             <TableCell colSpan={2}>
-                              <form onSubmit={(e) => buyCoins(e, row.name, row.current_price)}>
+                              <form onSubmit={(e) => buyCoins(e, row.id, row.symbol, row.name, row.current_price)}>
                                 <div class="mb-6">
                                   <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Enter the amount of coins you want to buy:</label>
                                   <input type="text" onChange={(e)=> setBuyCoinsData(e.target.value)} class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="0.00" required />

@@ -10,11 +10,11 @@ function GoogleMiddleware() {
     const navigate = useNavigate();
     // const {REACT_APP_BASE_BACKEND_URL} = process.env;
     let code = searchParams.get("code")
-    const BACKEND_URL = "http://localhost:8000"
+    const BACKEND_URL = process.env.REACT_APP_BASE_BACKEND_URL
     const getTokens = async(auth_code) => {
         console.log(auth_code)
         try{
-            axios.post(`${BACKEND_URL}/api/google/callback/`, {
+            axios.post(`${BACKEND_URL}api/google/callback/`, {
                 headers:{
                     'Content-Type':'application/json'
                 },

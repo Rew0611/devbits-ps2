@@ -6,9 +6,10 @@ import AuthContext from "../../context/AuthContext";
 
 const WatchlistCard = (props) => {
     let {authTokens} = useContext(AuthContext);
+    const BACKEND_URL = process.env.REACT_APP_BASE_BACKEND_URL;
 
     const remove = ()=>{
-        axios.post("http://localhost:8000/remove-watchlist/",{
+        axios.post(`${BACKEND_URL}remove-watchlist/`,{
             code: props.title
         },{
             headers: {

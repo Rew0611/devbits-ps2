@@ -6,7 +6,7 @@ const AuthContext = createContext()
 
 export default AuthContext;
 
-const BACKEND_URL = "http://localhost:8000"
+const BACKEND_URL = process.env.REACT_APP_BASE_BACKEND_URL
 const CLIENT_SECRET = "N882y5T9fbntN1dOy8ZecbNKpSOLafal3H5TXNxmk0G6Rg4eSvcF9uzRR7uIn7eUZbRVyGTkx7LUMos9CeVlb03anWF2ih8mfQaOgLa8OZjN8KA34zDsDOdHzPzDQTSb"
 const CLIENT_ID = "blGM0JnYq0vmglFGRNE5f06BOkvLcxIYPjocZsyC"
 
@@ -21,7 +21,7 @@ export const AuthProvider = ({children}) => {
             console.log(access_token)
             let response = await axios({
                 method: 'get',
-                url: `${BACKEND_URL}/current_user/`,
+                url: `${BACKEND_URL}current_user/`,
                 headers: {'Authorization': `Bearer ${access_token}`}
             });
 
@@ -41,7 +41,7 @@ export const AuthProvider = ({children}) => {
 
     let loginUser = async (email, password)=> {
         try{
-            axios.post(`${BACKEND_URL}/gettoken/`, {
+            axios.post(`${BACKEND_URL}gettoken/`, {
                 email:email,
                 password:password,
                 // grant_type:"password",
@@ -100,7 +100,7 @@ export const AuthProvider = ({children}) => {
         tokens = JSON.parse(tokens)
         console.log(authTokens)
         try {
-            const response = await axios.post(`${BACKEND_URL}/refreshtoken/`, {
+            const response = await axios.post(`${BACKEND_URL}refreshtoken/`, {
                 refresh: tokens?.refresh
               });
          

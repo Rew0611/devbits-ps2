@@ -4,7 +4,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 import './signup.css'
 
-const REACT_APP_BASE_BACKEND_URL = "http://localhost:8000";
+const BACKEND_URL = process.env.REACT_APP_BASE_BACKEND_URL ;
 
 const Signup = () => {
     const [formData, setformData] = useState({});
@@ -32,7 +32,7 @@ const Signup = () => {
                 password: formData.pass1,
             }
           axios
-            .post(`${REACT_APP_BASE_BACKEND_URL}/register/`, data, {
+            .post(`${BACKEND_URL}register/`, data, {
               headers: {
                 "Content-Type": "application/json",
               },
