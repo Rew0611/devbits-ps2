@@ -2,30 +2,37 @@ import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
+
 import './signup.css'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const BACKEND_URL = process.env.REACT_APP_BASE_BACKEND_URL ;
+const BACKEND_URL = process.env.REACT_APP_BASE_BACKEND_URL;
 
 const Signup = () => {
-    const [formData, setformData] = useState({});
-    const navigate = useNavigate();
-    const location = useLocation();
-    // console.log(location.state)
+  const [formData, setformData] = useState({});
+  const navigate = useNavigate();
+  const location = useLocation();
+  // console.log(location.state)
 
-    useEffect(()=>{
-      if (location.state)setformData({...formData, ["name"]: location.state.username, ["email"]: location.state.email})
-    }, [])
+  useEffect(() => {
+    if (location.state)
+      setformData({
+        ...formData,
+        ["name"]: location.state.username,
+        ["email"]: location.state.email,
+      });
+  }, []);
 
-    const handleChange = (e) => {
-        setformData({ ...formData, [e.target.name]: e.target.value });
-    };
+  const handleChange = (e) => {
+    setformData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-    async function handleSubmit(e) {
-        e.preventDefault();
-        console.log(formData)
-        // await loginUser(formData.email, formData.password);
+  async function handleSubmit(e) {
+    console.log(BACKEND_URL);
+    e.preventDefault();
+    console.log(formData);
+    // await loginUser(formData.email, formData.password);
 
         if (formData.pass1 === formData.pass2) {
             let data = {
@@ -185,3 +192,4 @@ const Signup = () => {
 }
 
 export default Signup;
+

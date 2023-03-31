@@ -11,6 +11,7 @@ import Signup from './components/Signup/signup';
 import Dashboard from './components/Dashboard/dashboard';
 import GoogleMiddleware from './components/GoogleLogin/GoogleMiddleware';
 import { AuthProvider } from "./context/AuthContext";
+import Know from "./components/knowstock/know";
 import News from "./components/News/News";
 import { ToastContainer, toast } from "react-toastify";
 
@@ -39,6 +40,7 @@ function App() {
             <Route path="/news" element={<News apiKey={apiKey} section="home"/>}/>
             <Route path='/api/google/callback' element={<GoogleMiddleware />}/>
             <Route path="/coins/:id" element={<CoinPage/>} />
+            <Route path="/know" element={<Know/>}></Route>
           </Routes>
       </div>    
   );

@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import ReactHtmlParser from "react-html-parser";
 import CoinInfo from "../components/CoinInfo";
 import { SingleCoin } from "../config/api";
+import {useMediaQuery} from "@material-ui/core";
 import { numberWithCommas } from "../components/CoinsTable";
 // import { CryptoState } from "../CryptoContext";
 
@@ -15,6 +16,8 @@ const CoinPage = () => {
   // const { currency, symbol } = CryptoState();
   const currency  = "INR"; 
   const symbol = "₹";
+
+  const matches = useMediaQuery('(min-width:800px)');
 
   const fetchCoin = async () => {
     const { data } = await axios.get(SingleCoin(id));
@@ -35,6 +38,14 @@ const CoinPage = () => {
         alignItems: "center",
       },
       marginTop:"2.5rem"
+    },
+    scontainer:{
+      display: "flex",
+      [theme.breakpoints.down("md")]: {
+        flexDirection: "column",
+        alignItems: "center",
+      },
+      marginTop:"5rem"
     },
     sidebar: {
       width: "30%",
@@ -84,7 +95,7 @@ const CoinPage = () => {
   if (!coin) return <LinearProgress style={{ backgroundColor: "gold",marginTop:"4rem" }} />;
 
   return (
-    <div className={classes.container}>
+    <div className={matches? classes.scontainer: classes.container}>
       <div className={classes.sidebar}>
         <img
           src={coin?.image.large}
@@ -141,6 +152,7 @@ const CoinPage = () => {
               style={{
                 fontFamily: "Montserrat",
               }}
+              className='text-teal-900'
             >
               {symbol}{" "}
               {numberWithCommas(

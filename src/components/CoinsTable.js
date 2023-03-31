@@ -21,7 +21,7 @@ import {
   Paper,
 } from "@material-ui/core";
 import axios from "axios";
-import CoinInfo from "./CoinInfo";
+import CoinInfox from "./CoinInfo2";
 import { CoinList } from "../config/api";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
@@ -338,7 +338,7 @@ export default function CoinsTable() {
                         <TableRow padding={0}>
                           {/* <div className="flex items-center content-between"> */}
                           <TableCell colSpan={2}>
-                            <CoinInfo coin={row} />
+                            <CoinInfox coin={row} />
                             </TableCell>
                             {/* <TableCell> */}
                             {/* <div className="flex justify-center items-center coins-buy-button"></div> */}

@@ -1,18 +1,14 @@
 export const chartDays = [
   {
-    label: "24 Hours",
-    value: 1,
+    label: "Price",
+    value: 'data.prices',
   },
   {
-    label: "30 Days",
-    value: 30,
+    label: "Market Capital",
+    value: 'market_caps',
   },
   {
-    label: "3 Months",
-    value: 90,
-  },
-  {
-    label: "1 Year",
-    value: 365,
+    label: "Volume",
+    value: 'total_volumes',
   },
 ];
