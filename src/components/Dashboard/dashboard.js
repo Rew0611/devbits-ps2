@@ -63,7 +63,7 @@ const Dashboard = () => {
                 <div className="watchlist flex flex-col overflow-auto p-6">
                     <div className="my-stocks-heading text-2xl text-white m-5">MY WATCHLIST</div>
                     {watchlist.map((data) => {
-                        return <WatchlistCard title={data.code_name} desc={data.full_name} image={data.image} />
+                        return <WatchlistCard id={data.id1} title={data.code_name} desc={data.full_name} image={data.image} />
                     })}
                 </div>
                 {/* <Graph/> */}
