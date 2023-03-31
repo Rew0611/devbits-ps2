@@ -107,7 +107,8 @@ const Main = () => {
                     </video>
                     </div> 
                 </div>
-        <About className='abouty'></About>
+                <div id='axess'>
+        <About className='abouty'></About></div>
         <div class="flex felx-col items-center justify-center mt-10">
           {" "}
           <span class="rounded-full bg-green-500 px-2 py-1 text-white uppercase text-sm">

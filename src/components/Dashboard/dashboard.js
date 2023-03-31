@@ -324,6 +324,7 @@ const Dashboard = () => {
                     title={data.code_name}
                     desc={data.full_name}
                     image={data.image}
+                    onClick={() => navigate(`/coins/${data.id}`)}
                   />
                 );
               })}
