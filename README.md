@@ -1,70 +1,14 @@
-# Getting Started with Create React App
+The Problem statement asked us to build a full-stack website for this financial brokerage company, along with other functionalities described in detail. From our understanding of the PS and the limited time, we tried our best to fulfil as much as possible.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The site has multiple sections for the needs of someone investing in cryptocurrencies. 
 
-## Available Scripts
+One of the fundamental tasks of the site is to give the user the ability to buy cryptocurrencies. It uses real-time data to help the person know the commodity's price currently. Since many cryptocurrencies exist, one can put them on his watchlist without buying to analyse regularly.
 
-In the project directory, you can run:
+Secondly, the person can manage his portfolio using the dashboard section. Initially, every user is given 1 million rupees to buy cryptos. Also, the user's every transaction and the consequent profit/loss of the trade is available in this section. The dashboard section also has a separate watchlist section, described above. From here, one can see the prices of his favourite cryptos easily.
 
-### `npm start`
+The use of the Info section can help the user to know the price, market capital and volume of any coin over any period of time.
+One can find the plot too for easier understanding. This data can help the person in analysing the market better.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The news section has all the latest things happening in finance. 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The site has a fully functional backend, with google auth verification for easier login and signups.
