@@ -37,7 +37,7 @@ export default function About() {
                   </svg>
                   <span className="relative">In</span>
                 </span>{' '}
-                investing, what is comfortable is rarely profiatble.
+                investing, what is comfortable is rarely profitable.
               </h2>
               <p className="text-base text-gray-400 md:text-lg">
                 That's why we at Levi are here to help you in your crypto journey to become rich easier.
