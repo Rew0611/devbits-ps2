@@ -1,6 +1,6 @@
 The Problem statement asked us to build a full-stack website for this financial brokerage company, along with other functionalities described in detail. From our understanding of the PS and the limited time, we tried our best to fulfil as much as possible.
 
-The site has multiple sections for the needs of someone investing in cryptocurrencies. 
+The site has multiple sections for the needs of someone investing in cryptocurrencies and stocks. 
 
 One of the fundamental tasks of the site is to give the user the ability to buy cryptocurrencies. It uses real-time data to help the person know the commodity's price currently. Since many cryptocurrencies exist, one can put them on his watchlist without buying to analyse regularly.
 
