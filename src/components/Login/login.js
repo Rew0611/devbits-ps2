@@ -35,7 +35,7 @@ const Login = () => {
                             <input
                                 type="email"
                                 onChange={handleChange}
-                                className="block p-2 h-8 w-full mt-1 rounded-md shadow-sm"
+                                className="block p-2 h-8 w-full mt-1 rounded-md shadow-sm text-black"
                                 name="email"
                                 placeholder=""
                                 required={true}
@@ -55,6 +55,7 @@ const Login = () => {
                                         w-full
                                         rounded-md
                                         shadow-sm
+                                        text-black
                                     "
                                 required={true}
                             />
