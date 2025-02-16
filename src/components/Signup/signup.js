@@ -118,7 +118,8 @@ const Signup = () => {
                               h-8
                               w-full
                               rounded-md
-                              shadow-sm"
+                              shadow-sm
+                              text-black"
                     value={formData.email}
                     name="email"
                     placeholder=""
@@ -137,7 +138,8 @@ const Signup = () => {
                                 h-8
                                 w-full
                                 rounded-md
-                                shadow-sm"
+                                shadow-sm
+                                text-black"
                     name="name"
                     placeholder=""
                     required={true}
@@ -154,7 +156,8 @@ const Signup = () => {
                               h-8
                               w-full
                               rounded-md
-                              shadow-sm"
+                              shadow-sm
+                              text-black"
                     name="pass1"
                     placeholder=""
                     required={true}
@@ -171,7 +174,8 @@ const Signup = () => {
                               h-8
                               w-full
                               rounded-md
-                              shadow-sm"
+                              shadow-sm
+                              text-black"
                     name="pass2"
                     placeholder=""
                     required={true}
